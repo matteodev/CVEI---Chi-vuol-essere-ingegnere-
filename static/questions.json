@@ -1,0 +1,2522 @@
+[
+  {
+    "id": "FOCUS-L01-1",
+    "level": 1,
+    "subject": "Data Engineering",
+    "text": "Una pipeline importa ordini e trova due righe con lo stesso event_id. Quale campo è il candidato diretto per deduplicare gli eventi?",
+    "answers": [
+      "event_id",
+      "Il nome del file di log",
+      "Il numero del worker",
+      "L’istante del retry"
+    ],
+    "correct": 0,
+    "explanation": "Un identificativo stabile dell’evento permette di riconoscere la stessa occorrenza anche dopo un retry."
+  },
+  {
+    "id": "FOCUS-L01-2",
+    "level": 1,
+    "subject": "Software Engineering",
+    "text": "Un test legge l’ora di sistema e fallisce a mezzanotte. Quale cambiamento rende verificabili i confini temporali?",
+    "answers": [
+      "Iniettare un clock controllabile dal test",
+      "Aggiungere una sleep di un secondo",
+      "Eseguire il test soltanto di giorno",
+      "Confrontare solo il nome del metodo"
+    ],
+    "correct": 0,
+    "explanation": "Un clock controllato consente di simulare mezzanotte e altri confini senza dipendere dall’ora reale."
+  },
+  {
+    "id": "FOCUS-L01-3",
+    "level": 1,
+    "subject": "Databases",
+    "text": "La tabella ordini contiene totale = 10, NULL, 20. Quanto restituisce COUNT(totale)?",
+    "answers": [
+      "2",
+      "3",
+      "1",
+      "NULL"
+    ],
+    "correct": 0,
+    "explanation": "COUNT(colonna) conta i valori non NULL; COUNT(*) conterebbe tutte e tre le righe."
+  },
+  {
+    "id": "FOCUS-L01-4",
+    "level": 1,
+    "subject": "DevOps",
+    "text": "Una pipeline CI deve bloccare il merge quando un test fallisce. Quale configurazione esprime questo vincolo?",
+    "answers": [
+      "Rendere obbligatorio il controllo dei test sulla pull request",
+      "Eseguire i test solo dopo il rilascio",
+      "Ignorare il codice di uscita dei test",
+      "Contare soltanto quanti test esistono"
+    ],
+    "correct": 0,
+    "explanation": "Un controllo obbligatorio collega l’esito della suite alla possibilità di integrare il cambiamento."
+  },
+  {
+    "id": "FOCUS-L01-5",
+    "level": 1,
+    "subject": "Soft Skills",
+    "text": "Devi passare un bug a un altro team. Quale segnalazione riduce i tentativi necessari per riprodurlo?",
+    "answers": [
+      "Passi minimi, risultato atteso, risultato osservato e versione",
+      "Solo «non funziona»",
+      "Un giudizio sulla qualità del team",
+      "Il numero totale dei commit del mese"
+    ],
+    "correct": 0,
+    "explanation": "Un caso minimo riproducibile e l’ambiente rendono il problema verificabile senza ricostruire il contesto per supposizioni."
+  },
+  {
+    "id": "FOCUS-L01-6",
+    "level": 1,
+    "subject": "Functional Programming",
+    "text": "La funzione f(x) restituisce x + contatoreGlobale, e il contatore può cambiare. Come renderla pura?",
+    "answers": [
+      "Passare il contatore come argomento ed evitare modifiche esterne",
+      "Rinominare il contatore",
+      "Aggiungere un log prima del calcolo",
+      "Leggere il contatore due volte"
+    ],
+    "correct": 0,
+    "explanation": "Rendere esplicito l’input elimina la dipendenza da uno stato esterno variabile, se la funzione non produce altri effetti."
+  },
+  {
+    "id": "EXTRA-L01-1",
+    "level": 1,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Un record Kafka viene scritto nella partizione 2 con offset 17. Che cosa identifica l’offset in questo contesto?",
+    "answers": [
+      "La posizione nel log di quella partizione",
+      "La priorità globale del record",
+      "Il numero di consumer del gruppo",
+      "La durata della retention in secondi"
+    ],
+    "correct": 0,
+    "explanation": "L’offset è una posizione nel log di una specifica partizione, non una posizione unica tra tutti i topic."
+  },
+  {
+    "id": "EXTRA-L01-2",
+    "level": 1,
+    "subject": "System Design",
+    "text": "L’API di un job lungo restituisce subito 202 e un job_id. Quale endpoint consente al client di seguirne l’avanzamento?",
+    "answers": [
+      "Un endpoint di stato identificato dal job_id",
+      "Solo un endpoint che ricrea il job",
+      "Un endpoint senza alcun riferimento al job",
+      "Un endpoint che restituisce sempre 200 e nessun dato"
+    ],
+    "correct": 0,
+    "explanation": "Il client deve poter osservare lo stato dell’operazione asincrona usando un’identità stabile."
+  },
+  {
+    "id": "EXTRA-L01-3",
+    "level": 1,
+    "subject": "Distributed Systems",
+    "text": "Un servizio chiama una dipendenza remota. Quale limite evita di attendere indefinitamente una risposta?",
+    "answers": [
+      "Un timeout o una deadline esplicita",
+      "Un buffer senza limite",
+      "Una connessione priva di scadenza",
+      "Un retry ricorsivo senza condizioni"
+    ],
+    "correct": 0,
+    "explanation": "Timeout e deadline delimitano il tempo di attesa; l’esito remoto può comunque restare incerto."
+  },
+  {
+    "id": "EXTRA-L01-4",
+    "level": 1,
+    "subject": "Databases",
+    "text": "In SQL, quale predicato seleziona righe in cui deleted_at è NULL?",
+    "answers": [
+      "deleted_at IS NULL",
+      "deleted_at = NULL",
+      "deleted_at != NULL",
+      "deleted_at IN (NULL)"
+    ],
+    "correct": 0,
+    "explanation": "NULL richiede IS NULL o IS NOT NULL: i normali confronti con NULL non risultano veri."
+  },
+  {
+    "id": "EXTRA-L01-5",
+    "level": 1,
+    "subject": "Data Engineering",
+    "text": "Un file di eventi contiene timestamp senza fuso orario, ma arriva da due regioni. Quale dato manca per interpretarli senza ambiguità?",
+    "answers": [
+      "Il fuso o un offset temporale concordato",
+      "Il nome del job di importazione",
+      "Il numero delle colonne",
+      "La versione dell’editor usato"
+    ],
+    "correct": 0,
+    "explanation": "Una stessa ora locale può riferirsi a istanti diversi; il contratto temporale deve renderne esplicita l’interpretazione."
+  },
+  {
+    "id": "EXTRA-L01-6",
+    "level": 1,
+    "subject": "Functional Programming",
+    "text": "In Scala, Some(4).map(_ * 3) produce…",
+    "answers": [
+      "Some(12)",
+      "12",
+      "None",
+      "Some(Some(12))"
+    ],
+    "correct": 0,
+    "explanation": "map trasforma il valore presente conservando il contesto Option."
+  },
+  {
+    "id": "FOCUS-L02-1",
+    "level": 2,
+    "subject": "Distributed Systems",
+    "text": "Un worker riceve due volte lo stesso messaggio di creazione fattura. Quale difesa agisce direttamente sul duplicato?",
+    "answers": [
+      "Registrare e verificare atomicamente l’identità dell’operazione",
+      "Aumentare la dimensione del testo del messaggio",
+      "Generare una nuova identità a ogni consegna",
+      "Affidarsi al nome del worker"
+    ],
+    "correct": 0,
+    "explanation": "Una chiave stabile con controllo atomico consente di riconoscere un’operazione già applicata."
+  },
+  {
+    "id": "FOCUS-L02-2",
+    "level": 2,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Vuoi elaborare separatamente lo stesso topic Kafka per fatturazione e analytics. Come configuri i consumer?",
+    "answers": [
+      "Due consumer group distinti",
+      "Un solo gruppo condiviso dai due servizi",
+      "Nessun group e nessun offset per entrambi",
+      "Una sola partizione assegnata manualmente a nessuno"
+    ],
+    "correct": 0,
+    "explanation": "Gruppi distinti mantengono posizioni indipendenti e possono leggere entrambi tutti i record del topic."
+  },
+  {
+    "id": "FOCUS-L02-3",
+    "level": 2,
+    "subject": "System Design",
+    "text": "Tre istanze stateless servono richieste HTTP. Una non risponde più ai controlli di salute. Cosa dovrebbe fare il bilanciatore?",
+    "answers": [
+      "Escluderla finché non torna sana",
+      "Inviare tutte le richieste a quella istanza",
+      "Cancellare le sessioni sulle istanze sane",
+      "Disabilitare i controlli sulle tre istanze"
+    ],
+    "correct": 0,
+    "explanation": "Il routing verso istanze sane evita di continuare a inviare traffico a un backend guasto."
+  },
+  {
+    "id": "FOCUS-L02-4",
+    "level": 2,
+    "subject": "Databases",
+    "text": "Vuoi impedire due account con lo stesso indirizzo email, anche con INSERT concorrenti. Quale vincolo serve?",
+    "answers": [
+      "UNIQUE sull’email normalizzata secondo le regole del dominio",
+      "Solo una SELECT prima di INSERT",
+      "ORDER BY email in tutte le query",
+      "Un indice non univoco sul nome"
+    ],
+    "correct": 0,
+    "explanation": "Il database deve far rispettare l’unicità; un controllo separato nell’applicazione può subire una race condition."
+  },
+  {
+    "id": "FOCUS-L02-5",
+    "level": 2,
+    "subject": "Soft Skills",
+    "text": "Una PR modifica il protocollo di un servizio usato da un altro team. Quale revisione è necessaria prima del merge?",
+    "answers": [
+      "Verificare contratto e compatibilità con il team consumer",
+      "Valutare solo l’indentazione",
+      "Assumere che un test locale copra tutti i client",
+      "Aspettare i primi errori in produzione"
+    ],
+    "correct": 0,
+    "explanation": "Un cambiamento di protocollo richiede di considerare i consumer e le versioni che resteranno in uso."
+  },
+  {
+    "id": "FOCUS-L02-6",
+    "level": 2,
+    "subject": "Functional Programming",
+    "text": "In Scala, val xs = List(1, 2); val ys = xs :+ 3. Quale coppia di valori è corretta?",
+    "answers": [
+      "xs = List(1, 2); ys = List(1, 2, 3)",
+      "Entrambe diventano List(1, 2, 3)",
+      "xs diventa vuota",
+      "ys vale soltanto 3"
+    ],
+    "correct": 0,
+    "explanation": "La List immutabile non viene modificata: l’operazione costruisce un nuovo valore."
+  },
+  {
+    "id": "EXTRA-L02-1",
+    "level": 2,
+    "subject": "Data Engineering",
+    "text": "Una tabella eventi contiene event_id ripetuti a causa dei retry. Prima di contare gli eventi unici, quale operazione serve?",
+    "answers": [
+      "Deduplicare secondo event_id e una regola deterministica",
+      "Aumentare semplicemente COUNT(*)",
+      "Duplicare ogni riga una seconda volta",
+      "Ordinare le colonne per lunghezza"
+    ],
+    "correct": 0,
+    "explanation": "Il conteggio deve distinguere l’identità logica dalla molteplicità delle consegne."
+  },
+  {
+    "id": "EXTRA-L02-2",
+    "level": 2,
+    "subject": "Software Engineering",
+    "text": "In una funzione di prezzo, vuoi verificare il limite esatto che attiva uno sconto da € 100. Quale insieme di input è mirato?",
+    "answers": [
+      "99,99; 100; 100,01",
+      "10; 20; 30",
+      "Solo 1.000.000",
+      "Solo un valore casuale negativo"
+    ],
+    "correct": 0,
+    "explanation": "Valori appena sotto, sul confine e appena sopra aiutano a individuare errori nelle condizioni di soglia."
+  },
+  {
+    "id": "EXTRA-L02-3",
+    "level": 2,
+    "subject": "DevOps",
+    "text": "Una build scarica dipendenze con versioni variabili. Quale cambiamento migliora la riproducibilità?",
+    "answers": [
+      "Bloccare le versioni con un lockfile verificato",
+      "Scaricare sempre la versione più recente",
+      "Cancellare il manifest a ogni build",
+      "Cambiare repository a ogni esecuzione"
+    ],
+    "correct": 0,
+    "explanation": "Versioni e checksum fissati riducono variazioni involontarie tra build dello stesso sorgente."
+  },
+  {
+    "id": "EXTRA-L02-4",
+    "level": 2,
+    "subject": "Databases",
+    "text": "Vuoi trovare il numero di ordini per customer_id. Quale clausola SQL raggruppa le righe per cliente?",
+    "answers": [
+      "GROUP BY customer_id",
+      "ORDER BY totale",
+      "LIMIT customer_id",
+      "OFFSET customer_id"
+    ],
+    "correct": 0,
+    "explanation": "GROUP BY forma i gruppi sui quali applicare aggregazioni come COUNT(*)."
+  },
+  {
+    "id": "EXTRA-L02-5",
+    "level": 2,
+    "subject": "Soft Skills",
+    "text": "Una user story dice «esportare i dati». Quale criterio di accettazione è verificabile?",
+    "answers": [
+      "Con filtro X, il CSV contiene le colonne concordate e soltanto le righe autorizzate",
+      "L’esportazione deve sembrare professionale",
+      "Il pulsante deve essere molto utile",
+      "Il codice deve piacere a tutti"
+    ],
+    "correct": 0,
+    "explanation": "Un criterio osservabile specifica input, risultato e vincoli, permettendo una verifica condivisa."
+  },
+  {
+    "id": "EXTRA-L02-6",
+    "level": 2,
+    "subject": "Functional Programming",
+    "text": "In Scala, None.map((x: Int) => x + 1) restituisce…",
+    "answers": [
+      "None",
+      "Some(1)",
+      "Un’eccezione obbligatoria",
+      "Some(None)"
+    ],
+    "correct": 0,
+    "explanation": "Su None, map non applica la funzione perché non esiste un valore presente."
+  },
+  {
+    "id": "FOCUS-L03-1",
+    "level": 3,
+    "subject": "Data Engineering",
+    "text": "Un CSV usa «1,25» come numero decimale. La pipeline interpreta il campo come testo. Quale intervento corregge il dato?",
+    "answers": [
+      "Definire esplicitamente formato numerico e parsing",
+      "Ordinare le righe per nome file",
+      "Aumentare il numero dei retry",
+      "Aggiungere una colonna con la CPU del server"
+    ],
+    "correct": 0,
+    "explanation": "Lo schema e le regole di parsing devono rispettare il formato della sorgente; più retry non cambiano l’interpretazione."
+  },
+  {
+    "id": "FOCUS-L03-2",
+    "level": 3,
+    "subject": "Software Engineering",
+    "text": "Un test deve verificare una regola di sconto senza chiamare il servizio remoto dei prezzi. Quale soluzione isola la regola?",
+    "answers": [
+      "Passare un provider dei prezzi controllato dal test",
+      "Chiamare sempre il servizio di produzione",
+      "Ignorare il valore del prezzo",
+      "Eseguire il test solo se la rete è veloce"
+    ],
+    "correct": 0,
+    "explanation": "Una dipendenza controllata rende ripetibili prezzi e casi limite mantenendo reale la logica da verificare."
+  },
+  {
+    "id": "FOCUS-L03-3",
+    "level": 3,
+    "subject": "DevOps",
+    "text": "Un’immagine container deve essere la stessa tra staging e produzione. Come la identifichi senza dipendere da un tag mutabile?",
+    "answers": [
+      "Con il digest dell’immagine",
+      "Con il solo tag latest",
+      "Con il nome dell’operatore",
+      "Con il numero di righe del Dockerfile"
+    ],
+    "correct": 0,
+    "explanation": "Il digest identifica il contenuto dell’immagine; un tag può essere spostato su contenuti diversi."
+  },
+  {
+    "id": "FOCUS-L03-4",
+    "level": 3,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Un attore Pekko mantiene un contatore privato. Come dovrebbe un altro attore richiedere un incremento?",
+    "answers": [
+      "Inviare un messaggio previsto dal protocollo",
+      "Ottenere e mutare direttamente la variabile interna",
+      "Aggiornare una copia del contatore senza comunicarlo",
+      "Modificare il dispatcher globale"
+    ],
+    "correct": 0,
+    "explanation": "Il protocollo esplicito conserva l’incapsulamento dello stato e permette al destinatario di gestire la richiesta."
+  },
+  {
+    "id": "FOCUS-L03-5",
+    "level": 3,
+    "subject": "System Design",
+    "text": "Un catalogo cambia una volta al giorno e tollera 60 secondi di ritardo. Quale impostazione cache è coerente con il requisito di freschezza?",
+    "answers": [
+      "TTL massimo di 60 secondi, senza servire stale oltre il limite",
+      "TTL di 24 ore senza invalidazione",
+      "TTL infinito per ogni prodotto",
+      "Nessuna scadenza e aggiornamento manuale mensile"
+    ],
+    "correct": 0,
+    "explanation": "Un TTL limitato può delimitare l’età della copia; occorre considerare anche eventuali politiche che servono dati scaduti."
+  },
+  {
+    "id": "FOCUS-L03-6",
+    "level": 3,
+    "subject": "Functional Programming",
+    "text": "In Scala, List(1, 2, 3).map(_ + 1).filter(_ % 2 == 0) produce…",
+    "answers": [
+      "List(2, 4)",
+      "List(1, 3)",
+      "List(2, 3, 4)",
+      "List(4, 6)"
+    ],
+    "correct": 0,
+    "explanation": "Prima si ottiene List(2, 3, 4), poi il filtro mantiene i soli valori pari."
+  },
+  {
+    "id": "EXTRA-L03-1",
+    "level": 3,
+    "subject": "Databases",
+    "text": "Una query deve restituire solo gruppi con almeno 5 ordini. Quale clausola filtra COUNT(*) dopo GROUP BY?",
+    "answers": [
+      "HAVING COUNT(*) >= 5",
+      "WHERE COUNT(*) >= 5",
+      "ORDER BY COUNT(*) >= 5",
+      "LIMIT COUNT(*) >= 5"
+    ],
+    "correct": 0,
+    "explanation": "HAVING filtra i risultati aggregati; WHERE filtra le righe prima dell’aggregazione."
+  },
+  {
+    "id": "EXTRA-L03-2",
+    "level": 3,
+    "subject": "Distributed Systems",
+    "text": "Un servizio remoto può elaborare il comando ma perdere la risposta. Quale identificativo aiuta a recuperare l’esito al retry?",
+    "answers": [
+      "Un operation_id riutilizzato dal client",
+      "Un operation_id nuovo a ogni tentativo",
+      "Il solo indirizzo IP del bilanciatore",
+      "Il numero casuale del thread"
+    ],
+    "correct": 0,
+    "explanation": "Un’identità stabile consente di correlare i tentativi alla stessa operazione logica."
+  },
+  {
+    "id": "EXTRA-L03-3",
+    "level": 3,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Un attore deve rispondere a una richiesta in Akka/Pekko Typed. Quale elemento si include tipicamente nel messaggio?",
+    "answers": [
+      "Un ActorRef di risposta tipizzato, spesso chiamato replyTo",
+      "Il puntatore mutabile allo stack del chiamante",
+      "Il nome della variabile locale del mittente",
+      "La password del dispatcher"
+    ],
+    "correct": 0,
+    "explanation": "Un riferimento di risposta esplicito fa parte del protocollo tipizzato di richiesta e risposta."
+  },
+  {
+    "id": "EXTRA-L03-4",
+    "level": 3,
+    "subject": "DevOps",
+    "text": "Un container funziona localmente ma non in CI perché legge un file presente solo sul laptop. Qual è la correzione strutturale?",
+    "answers": [
+      "Dichiarare e fornire esplicitamente quel file come input della build o del runtime",
+      "Aggiungere un retry al comando mancante",
+      "Ignorare l’errore del file",
+      "Usare solo tag più lunghi"
+    ],
+    "correct": 0,
+    "explanation": "Le dipendenze implicite dall’ambiente locale compromettono la riproducibilità."
+  },
+  {
+    "id": "EXTRA-L03-5",
+    "level": 3,
+    "subject": "Soft Skills",
+    "text": "Due team usano significati diversi per «utente attivo» nella stessa metrica. Quale passo corregge il problema?",
+    "answers": [
+      "Concordare definizione, finestra temporale e query di riferimento",
+      "Fare la media dei due numeri senza spiegazioni",
+      "Scegliere il numero più grande",
+      "Cambiare il colore del grafico"
+    ],
+    "correct": 0,
+    "explanation": "Una metrica richiede semantica condivisa prima di confrontare implementazioni o risultati."
+  },
+  {
+    "id": "EXTRA-L03-6",
+    "level": 3,
+    "subject": "Functional Programming",
+    "text": "In Scala, Some(2).flatMap(x => Some(x + 1)) produce…",
+    "answers": [
+      "Some(3)",
+      "Some(Some(3))",
+      "3",
+      "None"
+    ],
+    "correct": 0,
+    "explanation": "flatMap compone una funzione che restituisce già Option evitando un contesto annidato."
+  },
+  {
+    "id": "FOCUS-L04-1",
+    "level": 4,
+    "subject": "Databases",
+    "text": "Clienti LEFT JOIN ordini: vuoi contare anche i clienti senza ordini. Quale conteggio dà zero per chi non ha match, se ordini.id è NOT NULL?",
+    "answers": [
+      "COUNT(ordini.id)",
+      "COUNT(*)",
+      "SUM(clienti.id)",
+      "COUNT(1)"
+    ],
+    "correct": 0,
+    "explanation": "La riga senza match contiene NULL nelle colonne di ordini: COUNT(ordini.id) la esclude, mentre COUNT(*) conta la riga del join."
+  },
+  {
+    "id": "FOCUS-L04-2",
+    "level": 4,
+    "subject": "Distributed Systems",
+    "text": "Un consumer elimina un file usando un messaggio ripetibile. Se il file è già assente, quale comportamento rende l’operazione idempotente?",
+    "answers": [
+      "Considerare raggiunto lo stato desiderato",
+      "Ricreare il file per eliminarlo nuovamente",
+      "Generare sempre un nuovo errore irrecuperabile",
+      "Eliminare un file diverso"
+    ],
+    "correct": 0,
+    "explanation": "L’effetto desiderato è l’assenza del file: ripetere l’operazione non deve introdurre ulteriori cambiamenti."
+  },
+  {
+    "id": "FOCUS-L04-3",
+    "level": 4,
+    "subject": "Data Engineering",
+    "text": "Una colonna customer_id è obbligatoria. Il nuovo batch ha il 4% di valori NULL. Quale controllo blocca direttamente questa regressione?",
+    "answers": [
+      "Un controllo di completezza con soglia coerente col contratto",
+      "Un test sulla dimensione del cluster",
+      "Un confronto dei nomi degli sviluppatori",
+      "Una misura della durata dei deploy"
+    ],
+    "correct": 0,
+    "explanation": "La completezza misura la presenza dei dati richiesti; una violazione del contratto deve essere visibile e gestita."
+  },
+  {
+    "id": "FOCUS-L04-4",
+    "level": 4,
+    "subject": "Software Engineering",
+    "text": "Un modulo crea al proprio interno il client HTTP concreto. Vuoi testare timeout e risposte senza rete. Quale refactoring aiuta?",
+    "answers": [
+      "Dipendere da un’interfaccia del client fornita dall’esterno",
+      "Rendere il client una variabile globale",
+      "Aggiungere chiamate HTTP nei costruttori dei test",
+      "Rimuovere la gestione degli errori"
+    ],
+    "correct": 0,
+    "explanation": "Un contratto iniettato permette di simulare i comportamenti remoti e verificare la logica applicativa."
+  },
+  {
+    "id": "FOCUS-L04-5",
+    "level": 4,
+    "subject": "Soft Skills",
+    "text": "La review segnala una race condition, ma non ne mostra l’interleaving. Quale richiesta aiuta a risolvere il dubbio tecnico?",
+    "answers": [
+      "Chiedere una sequenza di operazioni che viola l’invariante",
+      "Chiedere chi ha più anzianità",
+      "Richiedere solo una diversa formattazione",
+      "Chiudere la discussione senza test"
+    ],
+    "correct": 0,
+    "explanation": "Un interleaving concreto o un test mirato rende verificabile la race e la correzione proposta."
+  },
+  {
+    "id": "FOCUS-L04-6",
+    "level": 4,
+    "subject": "Functional Programming",
+    "text": "In Scala, def applyTwice(f: Int => Int, x: Int) = f(f(x)). Quanto vale applyTwice(_ + 3, 1)?",
+    "answers": [
+      "7",
+      "4",
+      "6",
+      "9"
+    ],
+    "correct": 0,
+    "explanation": "La prima applicazione produce 4, la seconda 7. La funzione ricevuta è usata come valore."
+  },
+  {
+    "id": "EXTRA-L04-1",
+    "level": 4,
+    "subject": "DevOps",
+    "text": "Il processo nel container ascolta solo su 127.0.0.1. Perché il port mapping può non renderlo raggiungibile dall’esterno del container?",
+    "answers": [
+      "Il processo non ascolta sull’interfaccia di rete del container",
+      "Il nome dell’immagine è troppo lungo",
+      "Il mapping converte automaticamente HTTP in HTTPS",
+      "Ogni container vieta connessioni in ingresso"
+    ],
+    "correct": 0,
+    "explanation": "Il bind al loopback del container limita i collegamenti; il servizio deve ascoltare sull’interfaccia appropriata."
+  },
+  {
+    "id": "EXTRA-L04-2",
+    "level": 4,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Un consumer Kafka ha elaborato correttamente il record con offset 41 e tutti i precedenti della partizione. Quale offset rappresenta il prossimo record da leggere?",
+    "answers": [
+      "42",
+      "41",
+      "40",
+      "0"
+    ],
+    "correct": 0,
+    "explanation": "Il commit della posizione esprime il prossimo offset da consumare, non quello dell’ultimo record appena completato."
+  },
+  {
+    "id": "EXTRA-L04-3",
+    "level": 4,
+    "subject": "System Design",
+    "text": "Vuoi limitare a 100 richieste al minuto per cliente, con clienti diversi indipendenti. Quale chiave usa il rate limiter?",
+    "answers": [
+      "L’identità autenticata del cliente",
+      "Un’unica chiave globale per tutti",
+      "Un valore casuale a ogni richiesta",
+      "Il nome dell’istanza che serve la richiesta"
+    ],
+    "correct": 0,
+    "explanation": "La chiave determina chi condivide il budget: deve corrispondere al soggetto del limite."
+  },
+  {
+    "id": "EXTRA-L04-4",
+    "level": 4,
+    "subject": "Data Engineering",
+    "text": "Una pipeline salva importi monetari e richiede precisione decimale esatta. Quale tipo è adatto?",
+    "answers": [
+      "DECIMAL/NUMERIC con precisione e scala definite",
+      "Float binario senza controlli",
+      "Stringhe arbitrarie senza formato",
+      "Timestamp locale"
+    ],
+    "correct": 0,
+    "explanation": "Un tipo decimale controllato rappresenta frazioni decimali senza l’approssimazione tipica dei float binari."
+  },
+  {
+    "id": "EXTRA-L04-5",
+    "level": 4,
+    "subject": "Software Engineering",
+    "text": "Vuoi evitare SQL injection in una query che usa un input utente come valore. Quale approccio serve?",
+    "answers": [
+      "Query parametrizzata con binding dei valori",
+      "Concatenazione diretta dell’input",
+      "Rimozione dei soli spazi",
+      "Codifica Base64 dell’input prima di concatenarlo"
+    ],
+    "correct": 0,
+    "explanation": "Il binding separa i valori dalla struttura SQL; nomi dinamici di tabelle o colonne richiedono controlli specifici."
+  },
+  {
+    "id": "EXTRA-L04-6",
+    "level": 4,
+    "subject": "Functional Programming",
+    "text": "In Scala, List(1, 2).flatMap(x => List(x, -x)) produce…",
+    "answers": [
+      "List(1, -1, 2, -2)",
+      "List(List(1, -1), List(2, -2))",
+      "List(0, 0)",
+      "List(1, 2)"
+    ],
+    "correct": 0,
+    "explanation": "flatMap concatena le liste risultanti nell’ordine degli elementi originali."
+  },
+  {
+    "id": "FOCUS-L05-1",
+    "level": 5,
+    "subject": "DevOps",
+    "text": "Un token di produzione è stato committato e poi cancellato dal file. Qual è il primo intervento sul token?",
+    "answers": [
+      "Revocarlo o ruotarlo",
+      "Limitarsi a rinominare il branch",
+      "Supporre che la cancellazione lo renda segreto",
+      "Comprimerlo in un archivio"
+    ],
+    "correct": 0,
+    "explanation": "La cronologia o copie del repository possono ancora contenerlo: il segreto esposto va reso inutilizzabile."
+  },
+  {
+    "id": "FOCUS-L05-2",
+    "level": 5,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Con partizionatore deterministico e numero di partizioni invariato, quale chiave aiuta a mantenere insieme gli eventi Kafka di uno stesso ordine?",
+    "answers": [
+      "order_id stabile",
+      "Un UUID nuovo per ogni invio",
+      "L’istante del retry",
+      "Un numero casuale scelto dal producer"
+    ],
+    "correct": 0,
+    "explanation": "Una chiave stabile instrada gli eventi correlati nella stessa partizione nelle condizioni indicate."
+  },
+  {
+    "id": "FOCUS-L05-3",
+    "level": 5,
+    "subject": "System Design",
+    "text": "Un servizio senza stato deve raddoppiare capacità e ha istanze equivalenti indipendenti. Quale intervento realizza scaling orizzontale?",
+    "answers": [
+      "Aggiungere istanze dietro il bilanciatore",
+      "Raddoppiare solo la RAM della stessa istanza",
+      "Aumentare soltanto il timeout del client",
+      "Cancellare i log delle richieste"
+    ],
+    "correct": 0,
+    "explanation": "Lo scaling orizzontale aumenta il numero di istanze; l’efficacia dipende anche dalla capacità delle dipendenze."
+  },
+  {
+    "id": "FOCUS-L05-4",
+    "level": 5,
+    "subject": "Databases",
+    "text": "Un trasferimento aggiorna due saldi nella stessa transazione. Il secondo UPDATE fallisce e la transazione viene annullata. Che cosa deve accadere al primo?",
+    "answers": [
+      "Anche la sua modifica deve essere annullata",
+      "Deve essere confermato da solo",
+      "Deve essere duplicato al prossimo SELECT",
+      "Deve diventare una modifica non tracciata"
+    ],
+    "correct": 0,
+    "explanation": "L’atomicità transazionale impedisce che resti applicata soltanto una parte del trasferimento."
+  },
+  {
+    "id": "FOCUS-L05-5",
+    "level": 5,
+    "subject": "Data Engineering",
+    "text": "Vuoi conservare i dati grezzi e ricalcolare trasformazioni nel warehouse. Quale sequenza soddisfa questo obiettivo?",
+    "answers": [
+      "Estrarre, caricare il raw, trasformare nel warehouse",
+      "Trasformare e scartare definitivamente il raw",
+      "Caricare soltanto un riepilogo senza sorgenti",
+      "Eliminare le sorgenti prima del caricamento"
+    ],
+    "correct": 0,
+    "explanation": "Con il livello raw disponibile, la trasformazione può essere rieseguita e confrontata al cambiare della logica."
+  },
+  {
+    "id": "FOCUS-L05-6",
+    "level": 5,
+    "subject": "Functional Programming",
+    "text": "In Scala, List(1, 2, 3).foldLeft(0)(_ + _) restituisce…",
+    "answers": [
+      "6",
+      "List(1, 2, 3)",
+      "0",
+      "3"
+    ],
+    "correct": 0,
+    "explanation": "foldLeft combina gli elementi con l’accumulatore: 0 + 1 + 2 + 3 = 6."
+  },
+  {
+    "id": "EXTRA-L05-1",
+    "level": 5,
+    "subject": "Databases",
+    "text": "La colonna created_at può contenere valori uguali. Per una paginazione ordinata stabile, cosa aggiungi all’ordinamento?",
+    "answers": [
+      "Una chiave univoca come tie-breaker",
+      "Solo un limite più grande",
+      "Un filtro che cambia casualmente",
+      "Niente: ogni database ordina implicitamente per id"
+    ],
+    "correct": 0,
+    "explanation": "Un ordinamento totale, per esempio created_at e id, evita ambiguità tra righe con lo stesso timestamp."
+  },
+  {
+    "id": "EXTRA-L05-2",
+    "level": 5,
+    "subject": "Distributed Systems",
+    "text": "Un sistema usa timestamp dei computer per ordinare eventi di nodi diversi. Quale problema deve considerare?",
+    "answers": [
+      "Clock skew tra i nodi",
+      "La certezza di orologi sempre identici",
+      "L’assenza di latenza di rete",
+      "L’ordinamento automatico per causalità"
+    ],
+    "correct": 0,
+    "explanation": "Orologi fisici diversi possono essere disallineati e non dimostrano da soli l’ordine causale degli eventi."
+  },
+  {
+    "id": "EXTRA-L05-3",
+    "level": 5,
+    "subject": "Soft Skills",
+    "text": "Un task dipende da un’API che un altro team non ha ancora stabilizzato. Quale piano rende gestibile la dipendenza?",
+    "answers": [
+      "Concordare contratto, referente e data di verifica, usando stub per il lavoro indipendente",
+      "Ignorare la dipendenza nel piano",
+      "Aspettare senza contattare il team",
+      "Promettere comunque il rilascio completo domani"
+    ],
+    "correct": 0,
+    "explanation": "Una dipendenza esplicita può essere verificata e gestita, mentre gli stub possono sbloccare le parti non dipendenti dall’implementazione finale."
+  },
+  {
+    "id": "EXTRA-L05-4",
+    "level": 5,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "In Pekko Streams, quale parametro di mapAsync(n) limita il numero di elaborazioni asincrone concorrenti nell’operatore?",
+    "answers": [
+      "n",
+      "Il nome della Source",
+      "Il numero di caratteri del topic",
+      "Il numero dei log abilitati"
+    ],
+    "correct": 0,
+    "explanation": "Il parallelismo n limita le elaborazioni concorrenti gestite da mapAsync."
+  },
+  {
+    "id": "EXTRA-L05-5",
+    "level": 5,
+    "subject": "System Design",
+    "text": "Devi servire immagini statiche globalmente senza inviare ogni lettura all’origine. Quale componente è appropriato?",
+    "answers": [
+      "Una CDN con caching e invalidazione coerenti",
+      "Un lock globale per tutte le immagini",
+      "Una query SQL per ogni pixel",
+      "Una sola connessione seriale verso l’origine"
+    ],
+    "correct": 0,
+    "explanation": "Una CDN distribuisce copie dei contenuti vicino ai client, con politiche di freschezza da definire."
+  },
+  {
+    "id": "EXTRA-L05-6",
+    "level": 5,
+    "subject": "Functional Programming",
+    "text": "In Scala, Right(5).map(_ + 2), inteso come Either[String, Int], produce…",
+    "answers": [
+      "Right(7)",
+      "Left(7)",
+      "7",
+      "Right(Right(7))"
+    ],
+    "correct": 0,
+    "explanation": "map sull’Either right-biased trasforma il valore di successo senza aggiungere un secondo livello di Either."
+  },
+  {
+    "id": "TECH-L06-1",
+    "level": 6,
+    "subject": "Distributed Systems",
+    "text": "Una chiamata remota va in timeout. Quale conclusione è giustificata dal solo timeout?",
+    "answers": [
+      "Il client non conosce con certezza l’esito remoto",
+      "Il server non ha sicuramente eseguito nulla",
+      "Il server ha sicuramente completato tutto",
+      "La rete non ha perso nessun pacchetto"
+    ],
+    "correct": 0,
+    "explanation": "Il server potrebbe non avere ricevuto la richiesta, averla eseguita oppure essere ancora al lavoro: serve un protocollo per riconciliare l’esito."
+  },
+  {
+    "id": "TECH-L06-2",
+    "level": 6,
+    "subject": "Software Engineering",
+    "text": "Due thread leggono lo stesso contatore, lo incrementano e lo riscrivono senza sincronizzazione. Qual è un rischio?",
+    "answers": [
+      "Perdere uno degli incrementi",
+      "Ottenere sempre esattamente due incrementi",
+      "Convertire automaticamente il contatore in una stringa",
+      "Impedire qualsiasi lettura futura"
+    ],
+    "correct": 0,
+    "explanation": "La sequenza read-modify-write non è necessariamente atomica: entrambi possono partire dallo stesso valore e sovrascriversi."
+  },
+  {
+    "id": "TECH-L06-3",
+    "level": 6,
+    "subject": "Soft Skills",
+    "text": "Hai un blocco che mette a rischio una scadenza concordata. Quale comunicazione è più utile?",
+    "answers": [
+      "Segnalare presto impatto, tentativi fatti e aiuto necessario",
+      "Aspettare la scadenza senza informare nessuno",
+      "Promettere comunque la data senza verifica",
+      "Attribuire subito il problema a un collega"
+    ],
+    "correct": 0,
+    "explanation": "Una segnalazione tempestiva e concreta consente al team di rivedere priorità, dipendenze o ambito."
+  },
+  {
+    "id": "TECH-L06-4",
+    "level": 6,
+    "subject": "DevOps",
+    "text": "A cosa serve una readiness probe in Kubernetes?",
+    "answers": [
+      "Indicare se un container è pronto a ricevere traffico",
+      "Riavviare sempre il nodo quando fallisce",
+      "Costruire una nuova immagine",
+      "Cifrare il traffico di rete"
+    ],
+    "correct": 0,
+    "explanation": "Se il Pod non è pronto, viene escluso dagli endpoint pronti del Service; la readiness non è una richiesta di riavvio del container."
+  },
+  {
+    "id": "TECH-L06-5",
+    "level": 6,
+    "subject": "System Design",
+    "text": "Un client interroga continuamente un elenco enorme. Quale modifica API limita i dati trasferiti per richiesta?",
+    "answers": [
+      "Introdurre paginazione con limiti espliciti",
+      "Restituire sempre tutti i record due volte",
+      "Disabilitare ogni limite di risposta",
+      "Aggiungere attese fisse dopo la risposta"
+    ],
+    "correct": 0,
+    "explanation": "La paginazione divide il risultato in porzioni e permette di controllare il costo delle singole richieste."
+  },
+  {
+    "id": "TECH-L06-6",
+    "level": 6,
+    "subject": "Functional Programming",
+    "text": "Quale descrizione di Option/Maybe è corretta?",
+    "answers": [
+      "Rappresenta la presenza o l’assenza di un valore",
+      "Garantisce che ogni operazione abbia successo",
+      "È sempre una lista di almeno due elementi",
+      "Esegue automaticamente una richiesta HTTP"
+    ],
+    "correct": 0,
+    "explanation": "Some/Just rappresenta un valore presente; None/Nothing rappresenta l’assenza, rendendola esplicita nel tipo."
+  },
+  {
+    "id": "EXTRA-L06-1",
+    "level": 6,
+    "subject": "Data Engineering",
+    "text": "Un job Spark legge solo due colonne da un dataset Parquet molto ampio. Quale proprietà del formato può ridurre l’I/O?",
+    "answers": [
+      "La memorizzazione colonnare permette la proiezione delle colonne",
+      "Ogni lettura deve sempre decodificare tutte le colonne",
+      "Parquet elimina ogni shuffle",
+      "Le colonne vengono trasformate automaticamente in indici univoci"
+    ],
+    "correct": 0,
+    "explanation": "Un formato colonnare consente al lettore di evitare colonne non richieste, secondo le capacità del motore."
+  },
+  {
+    "id": "EXTRA-L06-2",
+    "level": 6,
+    "subject": "Databases",
+    "text": "Una LEFT JOIN è seguita da WHERE destra.stato = 'attivo'. Che cosa accade alle righe sinistre senza match?",
+    "answers": [
+      "Sono escluse perché il predicato sul NULL non è vero",
+      "Sono sempre mantenute dalla sola parola LEFT",
+      "Vengono duplicate due volte",
+      "Diventano automaticamente righe attive"
+    ],
+    "correct": 0,
+    "explanation": "Il filtro WHERE opera dopo il join: se vuoi preservare le righe senza match, la posizione e la logica del predicato sono decisive."
+  },
+  {
+    "id": "EXTRA-L06-3",
+    "level": 6,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Un topic Kafka viene riletto da zero per ricostruire una vista. Quale proprietà della logica di proiezione evita incrementi duplicati dopo un replay parziale?",
+    "answers": [
+      "Deduplicazione o aggiornamenti idempotenti con identità stabili",
+      "Dipendere dall’orologio del worker a ogni replay",
+      "Azzerare casualmente gli offset",
+      "Usare sempre append senza chiavi"
+    ],
+    "correct": 0,
+    "explanation": "Il replay deve poter incontrare eventi già applicati senza corrompere la vista."
+  },
+  {
+    "id": "EXTRA-L06-4",
+    "level": 6,
+    "subject": "Software Engineering",
+    "text": "Un ciclo carica 100 ordini e poi fa una query cliente per ciascuno. Quale problema descrive questo comportamento?",
+    "answers": [
+      "N+1 query",
+      "Deadlock inevitabile",
+      "Compilazione incrementale",
+      "Hash collision obbligatoria"
+    ],
+    "correct": 0,
+    "explanation": "Una query iniziale più una per elemento moltiplica le chiamate; join o caricamenti batch possono ridurle."
+  },
+  {
+    "id": "EXTRA-L06-5",
+    "level": 6,
+    "subject": "System Design",
+    "text": "Una coda riceve stabilmente 120 job/s ma i worker completano 100 job/s. Senza scarti, come varia il backlog?",
+    "answers": [
+      "Cresce mediamente di 20 job/s",
+      "Si stabilizza automaticamente a zero",
+      "Diminuisce di 20 job/s",
+      "Resta uguale perché la coda è asincrona"
+    ],
+    "correct": 0,
+    "explanation": "Quando il tasso di ingresso supera quello di servizio, il disavanzo si accumula nella coda."
+  },
+  {
+    "id": "EXTRA-L06-6",
+    "level": 6,
+    "subject": "Functional Programming",
+    "text": "In Scala, Left(\"errore\").map((x: Int) => x + 1), come Either[String, Int], restituisce…",
+    "answers": [
+      "Left(\"errore\")",
+      "Right(1)",
+      "Right(\"errore\")",
+      "Un nuovo Left per ogni intero"
+    ],
+    "correct": 0,
+    "explanation": "Nel comportamento right-biased, map non trasforma il ramo Left."
+  },
+  {
+    "id": "TECH-L07-1",
+    "level": 7,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Con assegnazione standard a consumer group, un topic ha 6 partizioni e il gruppo 8 consumer. Quanti consumer al massimo possono avere partizioni assegnate contemporaneamente?",
+    "answers": [
+      "6",
+      "8",
+      "14",
+      "48"
+    ],
+    "correct": 0,
+    "explanation": "Ogni partizione viene assegnata a un solo consumer del gruppo alla volta; quelli eccedenti possono restare senza partizioni."
+  },
+  {
+    "id": "TECH-L07-2",
+    "level": 7,
+    "subject": "Data Engineering",
+    "text": "Che cosa rappresenta l’event time in uno stream di eventi?",
+    "answers": [
+      "Il momento in cui l’evento è avvenuto secondo il dato",
+      "Il momento in cui il job viene compilato",
+      "Sempre il momento in cui l’operatore lo elabora",
+      "La durata totale della retention"
+    ],
+    "correct": 0,
+    "explanation": "Event time e processing time sono distinti: un evento può arrivare o essere elaborato molto dopo il momento che rappresenta."
+  },
+  {
+    "id": "TECH-L07-3",
+    "level": 7,
+    "subject": "Databases",
+    "text": "Quale costo può introdurre un indice aggiuntivo su una tabella frequentemente modificata?",
+    "answers": [
+      "Lavoro aggiuntivo e spazio per mantenere l’indice",
+      "L’impossibilità di eseguire SELECT",
+      "L’eliminazione automatica dei vincoli",
+      "La cancellazione della chiave primaria"
+    ],
+    "correct": 0,
+    "explanation": "Un indice può accelerare certe letture, ma deve essere mantenuto quando cambiano i dati rilevanti."
+  },
+  {
+    "id": "TECH-L07-4",
+    "level": 7,
+    "subject": "Distributed Systems",
+    "text": "Qual è lo scopo del backpressure in una pipeline?",
+    "answers": [
+      "Limitare la produzione quando il downstream non riesce a tenere il passo",
+      "Garantire buffer di dimensione infinita",
+      "Eliminare il costo di elaborazione",
+      "Rendere ogni messaggio prioritario"
+    ],
+    "correct": 0,
+    "explanation": "La pressione dal downstream regola il flusso per evitare accumuli incontrollati; non rende il consumatore più veloce."
+  },
+  {
+    "id": "TECH-L07-5",
+    "level": 7,
+    "subject": "Software Engineering",
+    "text": "Un’API aggiunge un campo opzionale a una risposta JSON. Quale pratica dei client favorisce la compatibilità?",
+    "answers": [
+      "Tollerare i campi sconosciuti secondo il contratto",
+      "Rifiutare sempre qualunque campo aggiuntivo",
+      "Assumere che l’ordine dei campi definisca il significato",
+      "Ignorare anche tutti i campi obbligatori"
+    ],
+    "correct": 0,
+    "explanation": "Con un contratto estensibile, i client devono conservare la validazione dei campi richiesti senza rifiutare estensioni compatibili."
+  },
+  {
+    "id": "TECH-L07-6",
+    "level": 7,
+    "subject": "Functional Programming",
+    "text": "Per una lista, quale differenza c’è tra map e flatMap quando la funzione restituisce liste?",
+    "answers": [
+      "flatMap concatena di un livello le liste prodotte",
+      "map elimina sempre tutti gli elementi",
+      "flatMap ordina necessariamente i valori",
+      "map e flatMap hanno sempre lo stesso tipo di risultato"
+    ],
+    "correct": 0,
+    "explanation": "map produce una lista di liste; flatMap applica la funzione e concatena le liste risultanti, mantenendo l’ordine."
+  },
+  {
+    "id": "EXTRA-L07-1",
+    "level": 7,
+    "subject": "DevOps",
+    "text": "Un Pod Kubernetes richiede più CPU di quella allocabile su qualsiasi nodo. Qual è un esito atteso dello scheduling?",
+    "answers": [
+      "Resta Pending finché non esiste una collocazione valida",
+      "Ignora sempre le requests",
+      "Viene avviato su tutti i nodi",
+      "Riduce automaticamente il codice dell’applicazione"
+    ],
+    "correct": 0,
+    "explanation": "Lo scheduler usa le richieste di risorse per valutare la collocazione; capacità insufficiente può impedire l’assegnazione."
+  },
+  {
+    "id": "EXTRA-L07-2",
+    "level": 7,
+    "subject": "System Design",
+    "text": "L’API deve creare un ordine e restituirne l’identità. Il client può ripetere la POST per errori di rete. Quale elemento del contratto aiuta?",
+    "answers": [
+      "Una idempotency key con semantica e durata definite",
+      "Un header casuale ignorato dal server",
+      "Una risposta senza identificativo",
+      "Un timeout illimitato"
+    ],
+    "correct": 0,
+    "explanation": "Il contratto deve specificare come i tentativi ripetuti rappresentano la stessa operazione e per quanto tempo."
+  },
+  {
+    "id": "EXTRA-L07-3",
+    "level": 7,
+    "subject": "Soft Skills",
+    "text": "Il team vede aumentare la latenza dopo un deploy, ma non conosce la causa. Quale aggiornamento agli stakeholder è accurato?",
+    "answers": [
+      "Descrivere impatto osservato, mitigazione in corso e prossimo aggiornamento",
+      "Annunciare una causa certa senza evidenze",
+      "Tacere finché non si conosce ogni dettaglio",
+      "Dichiarare che il problema non può riguardare il deploy"
+    ],
+    "correct": 0,
+    "explanation": "Si possono comunicare fatti e azioni senza trasformare un’ipotesi in una certezza."
+  },
+  {
+    "id": "EXTRA-L07-4",
+    "level": 7,
+    "subject": "Databases",
+    "text": "Una transazione aggiorna A poi B; un’altra aggiorna B poi A. Quale rischio riduci imponendo a entrambe lo stesso ordine di lock?",
+    "answers": [
+      "Deadlock",
+      "Dirty read per forza",
+      "Overflow numerico",
+      "Duplicazione automatica degli indici"
+    ],
+    "correct": 0,
+    "explanation": "Un ordine coerente di acquisizione dei lock evita molte attese circolari tra transazioni."
+  },
+  {
+    "id": "EXTRA-L07-5",
+    "level": 7,
+    "subject": "Data Engineering",
+    "text": "Una pipeline incrementale usa solo updated_at > ultimo_timestamp. Più righe possono condividere lo stesso timestamp. Quale miglioramento evita di perderne alcune al confine?",
+    "answers": [
+      "Un cursore composto stabile, per esempio (updated_at, id), con semantica coerente",
+      "Arrotondare tutti i timestamp al giorno",
+      "Ignorare tutte le righe al confine",
+      "Cambiare casualmente il confronto a ogni esecuzione"
+    ],
+    "correct": 0,
+    "explanation": "Un tie-breaker univoco rende distinguibili le righe con lo stesso timestamp; aggiornamenti tardivi richiedono anche una strategia dedicata."
+  },
+  {
+    "id": "EXTRA-L07-6",
+    "level": 7,
+    "subject": "Functional Programming",
+    "text": "In Scala, una funzione Int => Option[Int] applicata con map a Option[Int] produce quale tipo?",
+    "answers": [
+      "Option[Option[Int]]",
+      "Option[Int] sempre",
+      "Int",
+      "List[Int]"
+    ],
+    "correct": 0,
+    "explanation": "map conserva il contesto esterno e non appiattisce quello restituito dalla funzione; flatMap serve per comporli."
+  },
+  {
+    "id": "TECH-L08-1",
+    "level": 8,
+    "subject": "System Design",
+    "text": "In una cache-aside, una lettura trova la chiave assente. Qual è il flusso tipico?",
+    "answers": [
+      "Leggere dalla sorgente e popolare la cache",
+      "Restituire sempre un errore definitivo",
+      "Cancellare la sorgente",
+      "Scrivere un valore casuale nella cache"
+    ],
+    "correct": 0,
+    "explanation": "Nel pattern cache-aside l’applicazione gestisce il miss leggendo la sorgente e memorizzando il risultato per letture successive."
+  },
+  {
+    "id": "TECH-L08-2",
+    "level": 8,
+    "subject": "DevOps",
+    "text": "Qual è l’obiettivo di un rilascio canary?",
+    "answers": [
+      "Esporre inizialmente una piccola quota di traffico alla nuova versione",
+      "Aggiornare tutto senza osservare metriche",
+      "Eliminare la versione precedente prima di ogni verifica",
+      "Evitare qualunque possibilità di rollback"
+    ],
+    "correct": 0,
+    "explanation": "Il canary limita inizialmente l’esposizione e usa segnali di salute per decidere se ampliare o interrompere il rilascio."
+  },
+  {
+    "id": "TECH-L08-3",
+    "level": 8,
+    "subject": "Soft Skills",
+    "text": "Due proposte architetturali dividono il team. Quale passo aiuta a decidere senza ridurre il confronto a preferenze personali?",
+    "answers": [
+      "Concordare criteri e confrontare compromessi con evidenze",
+      "Votare soltanto in base all’anzianità",
+      "Evitare di scrivere i requisiti",
+      "Scegliere chi parla più a lungo"
+    ],
+    "correct": 0,
+    "explanation": "Criteri condivisi come affidabilità, costi e manutenzione rendono confrontabili le alternative."
+  },
+  {
+    "id": "TECH-L08-4",
+    "level": 8,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "In Akka/Pekko Typed, un ask va in timeout. Quale effetto NON è garantito automaticamente?",
+    "answers": [
+      "L’annullamento del lavoro nel destinatario",
+      "Il fallimento dell’attesa del chiamante",
+      "La conclusione dell’attesa per timeout",
+      "La disponibilità di un esito di errore per l’attesa"
+    ],
+    "correct": 0,
+    "explanation": "Il timeout riguarda l’attesa della risposta. La cancellazione del lavoro remoto richiede un protocollo esplicito."
+  },
+  {
+    "id": "TECH-L08-5",
+    "level": 8,
+    "subject": "Databases",
+    "text": "Una query con WHERE tenant_id = ? ORDER BY created_at cerca righe di un singolo tenant. Quale indice B-tree è un candidato naturale da valutare?",
+    "answers": [
+      "(tenant_id, created_at)",
+      "(created_at, payload_binario)",
+      "Solo (payload_binario)",
+      "Nessun indice può aiutare questa query"
+    ],
+    "correct": 0,
+    "explanation": "Il prefisso tenant_id restringe la ricerca e created_at può supportare l’ordine entro il tenant. La convenienza effettiva va verificata con il piano."
+  },
+  {
+    "id": "TECH-L08-6",
+    "level": 8,
+    "subject": "Functional Programming",
+    "text": "Quale affermazione descrive la trasparenza referenziale?",
+    "answers": [
+      "Un’espressione può essere sostituita dal suo valore senza cambiare il comportamento",
+      "Ogni riferimento deve puntare a un oggetto mutabile",
+      "Ogni funzione deve fare logging",
+      "Tutte le espressioni devono essere valutate due volte"
+    ],
+    "correct": 0,
+    "explanation": "La sostituibilità con il valore è una proprietà che rende più semplice ragionare sul codice e sulle trasformazioni equivalenti."
+  },
+  {
+    "id": "EXTRA-L08-1",
+    "level": 8,
+    "subject": "Distributed Systems",
+    "text": "Un protocollo invia retry senza limiti durante un guasto prolungato. Quale rischio introduce per la dipendenza?",
+    "answers": [
+      "Amplificazione del carico proprio durante il guasto",
+      "Riduzione garantita del traffico",
+      "Eliminazione dei timeout",
+      "Impossibilità di duplicare richieste"
+    ],
+    "correct": 0,
+    "explanation": "I retry consumano capacità e possono ostacolare il recupero; servono budget, backoff e limiti."
+  },
+  {
+    "id": "EXTRA-L08-2",
+    "level": 8,
+    "subject": "Software Engineering",
+    "text": "Una cache locale usa una chiave che include user_id ma non tenant_id, mentre user_id è univoco solo nel tenant. Qual è il difetto?",
+    "answers": [
+      "Collisione logica e possibile esposizione di dati tra tenant",
+      "Una race eliminata dall’uso di stringhe",
+      "Solo un problema estetico della chiave",
+      "Una garanzia di condivisione sicura"
+    ],
+    "correct": 0,
+    "explanation": "La chiave deve includere tutte le dimensioni necessarie a distinguere i dati e il relativo contesto di autorizzazione."
+  },
+  {
+    "id": "EXTRA-L08-3",
+    "level": 8,
+    "subject": "DevOps",
+    "text": "Vuoi correlare i log di una richiesta attraverso tre microservizi. Quale dato propaghi?",
+    "answers": [
+      "Un trace context compatibile tra i servizi",
+      "Solo il nome della macchina iniziale",
+      "Un timestamp diverso privo di correlazione",
+      "Il numero totale di pod"
+    ],
+    "correct": 0,
+    "explanation": "Un contesto di traccia collega operazioni distribuite; occorre propagarlo anche attraverso confini asincroni."
+  },
+  {
+    "id": "EXTRA-L08-4",
+    "level": 8,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "In Pekko Streams mapAsync(4), il primo Future è lento e i successivi terminano subito. In quale ordine vengono emessi i risultati non nulli?",
+    "answers": [
+      "Nell’ordine degli elementi in ingresso",
+      "Sempre nell’ordine di completamento",
+      "In ordine alfabetico",
+      "In ordine inverso al topic"
+    ],
+    "correct": 0,
+    "explanation": "mapAsync mantiene l’ordine in uscita; un risultato precedente lento può ritardare quelli successivi già pronti."
+  },
+  {
+    "id": "EXTRA-L08-5",
+    "level": 8,
+    "subject": "Soft Skills",
+    "text": "Una decisione architetturale viene riaperta ogni mese perché nessuno ricorda le motivazioni. Quale documento aiuta?",
+    "answers": [
+      "Un ADR con contesto, alternative, decisione e conseguenze",
+      "Una lista dei soli nomi dei partecipanti",
+      "Uno screenshot della chat senza conclusione",
+      "Un diagramma senza spiegazioni"
+    ],
+    "correct": 0,
+    "explanation": "Un Architecture Decision Record conserva motivazioni e compromessi, così nuove evidenze possono essere confrontate con il contesto originale."
+  },
+  {
+    "id": "EXTRA-L08-6",
+    "level": 8,
+    "subject": "Functional Programming",
+    "text": "Una funzione restituisce IO[Int]. Quale separazione cerca il modello di effetti?",
+    "answers": [
+      "Descrivere il calcolo e controllarne l’esecuzione nel runtime",
+      "Garantire che ogni IO sia già eseguito alla costruzione",
+      "Rendere ogni calcolo necessariamente parallelo",
+      "Eliminare ogni possibilità di fallimento"
+    ],
+    "correct": 0,
+    "explanation": "Un tipo di effetto può rappresentare un programma da eseguire, separando la composizione dalla valutazione."
+  },
+  {
+    "id": "TECH-L09-1",
+    "level": 9,
+    "subject": "Data Engineering",
+    "text": "A cosa serve una watermark in molte pipeline di event-time streaming?",
+    "answers": [
+      "Stimare l’avanzamento dell’event time per gestire finestre e ritardi",
+      "Garantire che nessun evento futuro sarà mai in ritardo",
+      "Sostituire la chiave di partizionamento",
+      "Eliminare automaticamente tutti i duplicati"
+    ],
+    "correct": 0,
+    "explanation": "La watermark guida la gestione del tempo e degli eventi tardivi in base a una politica; non è una prova che non arriveranno più eventi vecchi."
+  },
+  {
+    "id": "TECH-L09-2",
+    "level": 9,
+    "subject": "Distributed Systems",
+    "text": "Perché aggiungere jitter a un backoff dei retry?",
+    "answers": [
+      "Per ridurre i nuovi tentativi simultanei di molti client",
+      "Per eliminare la necessità di un limite ai retry",
+      "Per garantire che ogni retry riesca",
+      "Per rendere tutte le attese uguali"
+    ],
+    "correct": 0,
+    "explanation": "La componente casuale evita che client falliti insieme continuino a ritentare in modo sincronizzato."
+  },
+  {
+    "id": "TECH-L09-3",
+    "level": 9,
+    "subject": "Software Engineering",
+    "text": "A cosa serve un contract test tra consumer e provider di un’API?",
+    "answers": [
+      "Verificare aspettative concordate su richieste e risposte",
+      "Dimostrare da solo l’assenza di ogni bug",
+      "Sostituire ogni test di sicurezza",
+      "Misurare soltanto l’utilizzo della CPU"
+    ],
+    "correct": 0,
+    "explanation": "I contract test intercettano incompatibilità del contratto; non provano la correttezza dell’intero sistema."
+  },
+  {
+    "id": "TECH-L09-4",
+    "level": 9,
+    "subject": "System Design",
+    "text": "Un servizio deve assorbire brevi picchi di richieste e può completare il lavoro in modo asincrono. Quale componente può disaccoppiare ingresso ed elaborazione?",
+    "answers": [
+      "Una coda con capacità e politiche di sovraccarico definite",
+      "Un buffer infinito in memoria",
+      "Un unico timeout illimitato",
+      "Una cache priva di scadenza per tutte le richieste"
+    ],
+    "correct": 0,
+    "explanation": "Una coda può assorbire picchi entro limiti progettati. Capacità, ritardi e gestione del sovraccarico restano necessari."
+  },
+  {
+    "id": "TECH-L09-5",
+    "level": 9,
+    "subject": "Soft Skills",
+    "text": "Durante un incidente, molte persone fanno modifiche indipendenti senza coordinarle. Quale intervento migliora il controllo?",
+    "answers": [
+      "Definire un coordinatore, ruoli e un registro delle azioni",
+      "Aumentare il numero di modifiche parallele non registrate",
+      "Interrompere tutte le comunicazioni",
+      "Cercare un colpevole prima di mitigare l’impatto"
+    ],
+    "correct": 0,
+    "explanation": "Coordinamento e tracciamento delle azioni riducono conflitti e permettono di collegare interventi ed effetti osservati."
+  },
+  {
+    "id": "TECH-L09-6",
+    "level": 9,
+    "subject": "Functional Programming",
+    "text": "Una funzione valida un input e restituisce Either[Errore, Valore]. Che cosa rende esplicito questo tipo?",
+    "answers": [
+      "L’alternativa tra un errore descritto e un valore valido",
+      "La certezza che non possano esistere bug",
+      "L’esecuzione parallela di due risultati",
+      "L’assenza di qualunque caso di errore"
+    ],
+    "correct": 0,
+    "explanation": "Either rappresenta due alternative. Per convenzione frequente, Left contiene l’errore e Right il risultato valido."
+  },
+  {
+    "id": "EXTRA-L09-1",
+    "level": 9,
+    "subject": "Databases",
+    "text": "Devi cercare righe con tenant_id fissato e created_at in un intervallo. Quale ordinamento delle colonne è spesso un buon punto di partenza per un B-tree?",
+    "answers": [
+      "(tenant_id, created_at)",
+      "(payload, created_at)",
+      "Solo (payload)",
+      "Nessuno, perché un indice non supporta intervalli"
+    ],
+    "correct": 0,
+    "explanation": "Una condizione di uguaglianza sul prefisso seguita da un intervallo può restringere efficacemente la scansione; il piano va comunque verificato."
+  },
+  {
+    "id": "EXTRA-L09-2",
+    "level": 9,
+    "subject": "Data Engineering",
+    "text": "Un dataset è partizionato per event_date. Quale filtro facilita il partition pruning diretto?",
+    "answers": [
+      "Un predicato sulla colonna event_date che identifica le date richieste",
+      "Una condizione sul nome del worker",
+      "Un ordinamento sulla dimensione dei file",
+      "Un filtro solo sul testo libero non correlato alla partizione"
+    ],
+    "correct": 0,
+    "explanation": "Il motore può evitare partizioni quando il predicato identifica quelle rilevanti secondo lo schema di partizionamento."
+  },
+  {
+    "id": "EXTRA-L09-3",
+    "level": 9,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Un messaggio causa sempre un errore di validazione deterministico. Continuare a ritentarlo senza limiti nel consumer rischia di bloccare la partizione. Quale politica è adatta?",
+    "answers": [
+      "Retry limitati e quarantena/DLQ con diagnostica e procedura di recupero",
+      "Retry immediati infiniti senza log",
+      "Commit di tutti gli offset futuri senza controllo",
+      "Cancellazione dell’intero topic"
+    ],
+    "correct": 0,
+    "explanation": "Un poison message richiede una gestione esplicita: la quarantena non sostituisce l’analisi e il recupero degli eventi esclusi."
+  },
+  {
+    "id": "EXTRA-L09-4",
+    "level": 9,
+    "subject": "DevOps",
+    "text": "Un container supera il proprio limite di memoria. Quale evento può verificarsi in Kubernetes?",
+    "answers": [
+      "Terminazione per memoria esaurita, osservabile come OOMKilled",
+      "Aumento automatico e illimitato del limite",
+      "Conversione automatica della RAM in CPU",
+      "Eliminazione dei vincoli di scheduling"
+    ],
+    "correct": 0,
+    "explanation": "I limiti di memoria possono portare alla terminazione per OOM; le requests e i limits hanno ruoli diversi."
+  },
+  {
+    "id": "EXTRA-L09-5",
+    "level": 9,
+    "subject": "System Design",
+    "text": "Vuoi paginare un feed ordinato per (created_at, id) su dati che crescono rapidamente. Quale cursore evita grandi OFFSET e identifica il confine dell’ultima pagina?",
+    "answers": [
+      "L’ultima coppia (created_at, id) letta",
+      "Solo il numero casuale del client",
+      "La dimensione totale della tabella",
+      "L’indice del thread HTTP"
+    ],
+    "correct": 0,
+    "explanation": "La keyset pagination usa una chiave d’ordine stabile per richiedere gli elementi successivi al confine."
+  },
+  {
+    "id": "EXTRA-L09-6",
+    "level": 9,
+    "subject": "Functional Programming",
+    "text": "Per un Monoide, quale proprietà deve avere empty rispetto a combine?",
+    "answers": [
+      "Essere identità sia a sinistra sia a destra",
+      "Essere un valore che annulla sempre il risultato",
+      "Essere necessariamente il numero 1",
+      "Essere diverso a ogni invocazione"
+    ],
+    "correct": 0,
+    "explanation": "Il valore neutro deve soddisfare combine(empty, x) = x e combine(x, empty) = x, oltre all’associatività dell’operazione."
+  },
+  {
+    "id": "TECH-L10-1",
+    "level": 10,
+    "subject": "DevOps",
+    "text": "Un processo risponde ai controlli ma è bloccato e non riesce più a progredire. Quale probe Kubernetes può richiederne il riavvio se configurata per rilevarlo?",
+    "answers": [
+      "Liveness probe",
+      "Readiness probe soltanto",
+      "Una query DNS qualunque",
+      "Un’etichetta del Deployment"
+    ],
+    "correct": 0,
+    "explanation": "Il fallimento ripetuto della liveness può causare il riavvio del container. Un controllo va progettato per rilevare il guasto che interessa."
+  },
+  {
+    "id": "TECH-L10-2",
+    "level": 10,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Un consumer Kafka aggiorna un database esterno e si arresta prima del commit dell’offset. Alla ripartenza, quale rischio deve gestire?",
+    "answers": [
+      "Rielaborare un record già applicato al database",
+      "Perdere necessariamente tutte le partizioni",
+      "Cambiare automaticamente il topic di destinazione",
+      "Ricevere sempre e solo record mai elaborati"
+    ],
+    "correct": 0,
+    "explanation": "La scrittura esterna e il commit dell’offset non sono automaticamente atomici insieme: l’elaborazione deve gestire una possibile ripetizione."
+  },
+  {
+    "id": "TECH-L10-3",
+    "level": 10,
+    "subject": "Databases",
+    "text": "In PostgreSQL READ COMMITTED, due SELECT successive nella stessa transazione possono osservare dati committed differenti?",
+    "answers": [
+      "Sì, ogni statement può avere un nuovo snapshot",
+      "No, lo snapshot è sempre fisso per l’intera transazione",
+      "Solo se la transazione usa READ UNCOMMITTED",
+      "No, perché le SELECT bloccano tutte le scritture"
+    ],
+    "correct": 0,
+    "explanation": "In READ COMMITTED una SELECT vede uno snapshot all’inizio dello statement; commit concorrenti possono comparire nella SELECT successiva."
+  },
+  {
+    "id": "TECH-L10-4",
+    "level": 10,
+    "subject": "Data Engineering",
+    "text": "Una dimensione Slowly Changing Dimension di tipo 2 deve conservare la storia. Quale strategia è tipica?",
+    "answers": [
+      "Creare una nuova versione della riga con intervallo di validità",
+      "Sovrascrivere sempre gli attributi senza storia",
+      "Cancellare tutte le versioni precedenti ogni notte",
+      "Salvare soltanto il numero totale di righe"
+    ],
+    "correct": 0,
+    "explanation": "SCD tipo 2 mantiene versioni della dimensione, spesso con chiave surrogata e informazioni di validità temporale."
+  },
+  {
+    "id": "TECH-L10-5",
+    "level": 10,
+    "subject": "Distributed Systems",
+    "text": "Nel teorema CAP, durante una partizione di rete quale coppia non è garantibile simultaneamente nel modello classico?",
+    "answers": [
+      "Linearizzabilità e disponibilità per ogni richiesta a nodi non guasti",
+      "Compressione e cifratura",
+      "Persistenza e uso di SQL",
+      "Autenticazione e logging"
+    ],
+    "correct": 0,
+    "explanation": "Nel modello CAP, durante una partizione non si possono garantire sia la consistenza linearizzabile sia la disponibilità di ogni operazione su nodi non guasti."
+  },
+  {
+    "id": "TECH-L10-6",
+    "level": 10,
+    "subject": "Functional Programming",
+    "text": "Quale chiamata ricorsiva è in posizione di coda?",
+    "answers": [
+      "return loop(n - 1, acc + n)",
+      "return n + loop(n - 1, acc)",
+      "return 1 + loop(n - 1, acc) * 2",
+      "return format(loop(n - 1, acc))"
+    ],
+    "correct": 0,
+    "explanation": "Una chiamata è in coda se dopo il suo ritorno non resta lavoro da fare. L’ottimizzazione effettiva dipende dal linguaggio e dal compilatore."
+  },
+  {
+    "id": "EXTRA-L10-1",
+    "level": 10,
+    "subject": "Software Engineering",
+    "text": "Un test generativo verifica decode(encode(x)) = x per molti x validi. Quale proprietà sta controllando?",
+    "answers": [
+      "Round-trip della serializzazione",
+      "Assenza di qualunque vulnerabilità del sistema",
+      "Ordinamento temporale dei thread",
+      "Prestazioni costanti per ogni input"
+    ],
+    "correct": 0,
+    "explanation": "La proprietà di round-trip verifica la compatibilità tra codifica e decodifica nel dominio degli input generati."
+  },
+  {
+    "id": "EXTRA-L10-2",
+    "level": 10,
+    "subject": "System Design",
+    "text": "Un servizio satura il pool di connessioni al database. Quale intervento evita che richieste illimitate continuino ad accumularsi in attesa?",
+    "answers": [
+      "Concorrenza e coda d’attesa limitate con timeout e gestione del sovraccarico",
+      "Un pool di attesa senza limite",
+      "Timeout sempre infiniti",
+      "Retry simultanei per ogni richiesta"
+    ],
+    "correct": 0,
+    "explanation": "Limitare il lavoro in volo evita che un collo di bottiglia provochi un accumulo senza controllo."
+  },
+  {
+    "id": "EXTRA-L10-3",
+    "level": 10,
+    "subject": "Soft Skills",
+    "text": "Per rispettare una data puoi ridurre l’ambito, ma una verifica di sicurezza è obbligatoria. Quale proposta è coerente?",
+    "answers": [
+      "Negoziare funzionalità rinviabili mantenendo la verifica obbligatoria",
+      "Saltare la verifica senza informare nessuno",
+      "Promettere lo stesso ambito ignorando il vincolo",
+      "Rimuovere il requisito dalla documentazione a posteriori"
+    ],
+    "correct": 0,
+    "explanation": "I compromessi vanno negoziati esplicitamente entro i vincoli non rinunciabili."
+  },
+  {
+    "id": "EXTRA-L10-4",
+    "level": 10,
+    "subject": "Data Engineering",
+    "text": "Vuoi ricostruire da quali sorgenti e trasformazioni deriva una colonna del report. Quale informazione serve?",
+    "answers": [
+      "Data lineage a livello adeguato di tabelle e colonne",
+      "Solo la dimensione del report",
+      "Il numero dei server web",
+      "La media del carico CPU"
+    ],
+    "correct": 0,
+    "explanation": "Il lineage documenta le dipendenze e i passaggi dei dati, utile per impatti, audit e debugging."
+  },
+  {
+    "id": "EXTRA-L10-5",
+    "level": 10,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "In Pekko Typed, un attore lancia un’eccezione senza una strategia di supervisione che gestisca il caso. Qual è il comportamento predefinito?",
+    "answers": [
+      "L’attore viene fermato",
+      "Il messaggio viene ritentato all’infinito",
+      "L’attore riparte automaticamente in ogni caso",
+      "Lo stato viene salvato automaticamente su Kafka"
+    ],
+    "correct": 0,
+    "explanation": "Pekko Typed arresta per default l’attore fallito; restart e altre politiche vanno configurati esplicitamente."
+  },
+  {
+    "id": "EXTRA-L10-6",
+    "level": 10,
+    "subject": "Functional Programming",
+    "text": "Che cosa fa sequence su List[Option[A]] secondo la semantica standard di Option?",
+    "answers": [
+      "Restituisce Option[List[A]], con None se un elemento è None",
+      "Restituisce sempre una List[A] ignorando le assenze",
+      "Esegue una richiesta HTTP per elemento",
+      "Restituisce solo il primo Some"
+    ],
+    "correct": 0,
+    "explanation": "sequence scambia la struttura esterna con il contesto dell’effetto; con Option un’assenza impedisce il risultato completo."
+  },
+  {
+    "id": "TECH-L11-1",
+    "level": 11,
+    "subject": "Software Engineering",
+    "text": "Devi rinominare una colonna usata da due versioni del servizio durante un rolling deploy. Quale strategia riduce il rischio di incompatibilità?",
+    "answers": [
+      "Expand–migrate–contract con un periodo di compatibilità",
+      "Rimuovere subito la colonna vecchia",
+      "Cambiare prima tutti i nomi senza migrare i dati",
+      "Disabilitare il versionamento dello schema"
+    ],
+    "correct": 0,
+    "explanation": "Si introduce prima una struttura compatibile, si migrano letture e dati, poi si rimuove la struttura vecchia quando non serve più."
+  },
+  {
+    "id": "TECH-L11-2",
+    "level": 11,
+    "subject": "System Design",
+    "text": "In un sistema stabile arrivano in media 200 richieste/s e ogni richiesta resta nel sistema 0,1 s in media. Per la legge di Little, quante richieste sono presenti in media?",
+    "answers": [
+      "20",
+      "2.000",
+      "200",
+      "0,0005"
+    ],
+    "correct": 0,
+    "explanation": "L = λW = 200 × 0,1 = 20 richieste medie nel sistema, usando medie e confini di misura coerenti."
+  },
+  {
+    "id": "TECH-L11-3",
+    "level": 11,
+    "subject": "Soft Skills",
+    "text": "Un prototipo promettente non è ancora validato al carico reale, ma viene proposta una data certa. Come comunichi la stima?",
+    "answers": [
+      "Espliciti ipotesi, intervallo e verifica che ridurrà l’incertezza",
+      "Trasformi il caso migliore in una garanzia",
+      "Nascondi le dipendenze esterne",
+      "Aumenti la precisione al minuto senza nuove evidenze"
+    ],
+    "correct": 0,
+    "explanation": "Una stima utile separa ciò che si sa dalle ipotesi e indica come ottenere le informazioni mancanti."
+  },
+  {
+    "id": "TECH-L11-4",
+    "level": 11,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Usando il normale tell di Akka/Pekko, senza protocolli aggiuntivi, quale semantica di consegna è fornita?",
+    "answers": [
+      "At-most-once",
+      "Exactly-once con persistenza automatica",
+      "At-least-once con retry infiniti",
+      "Consegna garantita anche dopo ogni crash"
+    ],
+    "correct": 0,
+    "explanation": "La consegna ordinaria è at-most-once: un messaggio può arrivare una volta o andare perso. Garanzie ulteriori richiedono meccanismi aggiuntivi."
+  },
+  {
+    "id": "TECH-L11-5",
+    "level": 11,
+    "subject": "DevOps",
+    "text": "Un servizio ha un SLO di successo del 99,9% su 1.000.000 di richieste eleggibili. Quante richieste fallite esauriscono esattamente il budget di errore?",
+    "answers": [
+      "1.000",
+      "100",
+      "10.000",
+      "900.000"
+    ],
+    "correct": 0,
+    "explanation": "Il budget è lo 0,1% delle richieste eleggibili: 1.000.000 × 0,001 = 1.000."
+  },
+  {
+    "id": "TECH-L11-6",
+    "level": 11,
+    "subject": "Functional Programming",
+    "text": "Per parallelizzare una riduzione raggruppando diversamente gli elementi senza cambiarne l’ordine, quale proprietà dell’operazione è essenziale?",
+    "answers": [
+      "Associatività",
+      "Mutabilità dello stato globale",
+      "Dipendenza dall’orologio",
+      "Obbligo di essere sottrazione"
+    ],
+    "correct": 0,
+    "explanation": "L’associatività consente di cambiare le parentesi. Se cambia anche l’ordine degli elementi serve valutare ulteriori proprietà, come la commutatività."
+  },
+  {
+    "id": "EXTRA-L11-1",
+    "level": 11,
+    "subject": "Distributed Systems",
+    "text": "Tre livelli di chiamata fanno ciascuno fino a 3 tentativi totali per ogni errore downstream. Nel caso peggiore quanti tentativi verso la dipendenza finale possono derivare da una richiesta?",
+    "answers": [
+      "27",
+      "9",
+      "3",
+      "6"
+    ],
+    "correct": 0,
+    "explanation": "I tentativi si moltiplicano: 3 × 3 × 3. I budget di retry vanno coordinati lungo la catena."
+  },
+  {
+    "id": "EXTRA-L11-2",
+    "level": 11,
+    "subject": "Databases",
+    "text": "Su una tabella append-only enorme, created_at è fortemente correlato all’ordine fisico. Quale tipo di indice PostgreSQL può riassumere intervalli di blocchi con poco spazio?",
+    "answers": [
+      "BRIN",
+      "Un indice hash solo sul payload",
+      "Un vincolo FOREIGN KEY",
+      "Un indice univoco obbligatorio su ogni colonna"
+    ],
+    "correct": 0,
+    "explanation": "BRIN mantiene riepiloghi per intervalli di blocchi e può essere utile quando i valori sono correlati con la posizione fisica."
+  },
+  {
+    "id": "EXTRA-L11-3",
+    "level": 11,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Un actor handler esegue I/O bloccante sul dispatcher condiviso. Quale rischio riguarda anche attori diversi?",
+    "answers": [
+      "Starvation dei thread del dispatcher",
+      "Un ordine globale garantito dei messaggi",
+      "Persistenza automatica delle mailbox",
+      "Scomparsa di tutti i timeout"
+    ],
+    "correct": 0,
+    "explanation": "Operazioni bloccanti possono occupare i thread che servono anche altri attori; servono API asincrone o esecuzione isolata adeguata."
+  },
+  {
+    "id": "EXTRA-L11-4",
+    "level": 11,
+    "subject": "DevOps",
+    "text": "Un deploy Kubernetes deve consentire al processo di terminare richieste in corso prima dello stop forzato. Quale aspetto configuri e implementi?",
+    "answers": [
+      "Gestione della terminazione e grace period coerente con il drain",
+      "Solo il colore dei log",
+      "Un limite di memoria più piccolo",
+      "Ignorare sempre SIGTERM"
+    ],
+    "correct": 0,
+    "explanation": "Il processo deve smettere di accettare lavoro e completare o trasferire quello in corso entro il periodo concesso."
+  },
+  {
+    "id": "EXTRA-L11-5",
+    "level": 11,
+    "subject": "Software Engineering",
+    "text": "Un client memorizza in cache una risposta di autorizzazione per sempre. Un ruolo viene revocato. Quale difetto emerge?",
+    "answers": [
+      "Una decisione obsoleta può continuare a concedere accesso",
+      "Il database diventa automaticamente serializzabile",
+      "La revoca si propaga per magia in ogni cache",
+      "L’identità dell’utente cambia da sola"
+    ],
+    "correct": 0,
+    "explanation": "Le decisioni sensibili richiedono una politica di invalidazione e freschezza coerente con il tempo di revoca richiesto."
+  },
+  {
+    "id": "EXTRA-L11-6",
+    "level": 11,
+    "subject": "Functional Programming",
+    "text": "In Cats, traverse applica f: A => F[B] a una List[A]. Quale forma ha il risultato?",
+    "answers": [
+      "F[List[B]]",
+      "List[F[B]] soltanto",
+      "F[A]",
+      "B"
+    ],
+    "correct": 0,
+    "explanation": "traverse mappa usando una funzione con effetto e raccoglie la struttura risultante dentro il contesto F."
+  },
+  {
+    "id": "TECH-L12-1",
+    "level": 12,
+    "subject": "Data Engineering",
+    "text": "Una pipeline deve ricaricare una partizione giornaliera senza duplicare i risultati. Quale strategia può rendere il backfill idempotente?",
+    "answers": [
+      "Sostituire atomicamente la partizione con il risultato ricalcolato",
+      "Aggiungere sempre le righe senza deduplicazione",
+      "Cambiare ogni volta gli identificatori degli eventi",
+      "Ignorare il confine temporale dei dati"
+    ],
+    "correct": 0,
+    "explanation": "Una sostituzione atomica del risultato della stessa partizione evita accumuli a ogni esecuzione, a parità di input e logica."
+  },
+  {
+    "id": "TECH-L12-2",
+    "level": 12,
+    "subject": "Databases",
+    "text": "PostgreSQL interrompe una transazione SERIALIZABLE con un errore di serializzazione. Qual è la gestione applicativa appropriata?",
+    "answers": [
+      "Ritentare l’intera transazione con limiti e gestione degli effetti esterni",
+      "Ritentare soltanto il COMMIT della transazione abortita",
+      "Ignorare l’errore e assumere il commit",
+      "Disabilitare tutti i vincoli del database"
+    ],
+    "correct": 0,
+    "explanation": "Il retry deve ripetere la logica transazionale da capo su un nuovo snapshot. Eventuali effetti esterni richiedono coordinamento o idempotenza."
+  },
+  {
+    "id": "TECH-L12-3",
+    "level": 12,
+    "subject": "Distributed Systems",
+    "text": "Un circuit breaker è aperto dopo molti errori verso una dipendenza. Quale comportamento è tipico?",
+    "answers": [
+      "Fallire rapidamente le nuove chiamate per un intervallo",
+      "Accodare per sempre tutte le chiamate",
+      "Ritentare immediatamente ogni chiamata senza limiti",
+      "Garantire che la dipendenza sia già guarita"
+    ],
+    "correct": 0,
+    "explanation": "Lo stato aperto limita le chiamate alla dipendenza; in seguito uno stato di prova può verificarne il recupero."
+  },
+  {
+    "id": "TECH-L12-4",
+    "level": 12,
+    "subject": "System Design",
+    "text": "Una chiave molto popolare scade simultaneamente nelle cache di molte istanze. Quale combinazione mitiga un cache stampede?",
+    "answers": [
+      "Coalescenza delle richieste e scadenze con jitter",
+      "Disabilitare tutti i limiti verso il database",
+      "Sincronizzare tutte le scadenze al secondo",
+      "Ritentare immediatamente e senza limiti ogni miss"
+    ],
+    "correct": 0,
+    "explanation": "La coalescenza riduce i caricamenti concorrenti della stessa chiave e il jitter evita scadenze perfettamente allineate."
+  },
+  {
+    "id": "TECH-L12-5",
+    "level": 12,
+    "subject": "Soft Skills",
+    "text": "In un postmortem emerge che un errore umano ha attivato un guasto grave. Quale analisi produce azioni più utili?",
+    "answers": [
+      "Ricostruire condizioni, barriere mancanti e azioni con responsabili e verifica",
+      "Fermarsi alla frase «prestare più attenzione»",
+      "Eliminare la cronologia dell’incidente",
+      "Concludere che ogni errore è imprevedibile"
+    ],
+    "correct": 0,
+    "explanation": "Un’analisi senza colpevolizzazione studia come il sistema abbia consentito l’incidente e propone interventi verificabili."
+  },
+  {
+    "id": "TECH-L12-6",
+    "level": 12,
+    "subject": "Functional Programming",
+    "text": "Quale coppia di leggi deve rispettare map per un functor?",
+    "answers": [
+      "Identità e composizione",
+      "Mutazione e cancellazione",
+      "Ordinamento e compressione",
+      "Blocco e risveglio"
+    ],
+    "correct": 0,
+    "explanation": "Le leggi richiedono map(identity) equivalente all’identità e map(f ∘ g) equivalente a map(g) seguito da map(f)."
+  },
+  {
+    "id": "EXTRA-L12-1",
+    "level": 12,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Un attore deve ripristinare stato da eventi persistiti. Perché l’event handler di recovery dovrebbe evitare l’invio di email come effetto collaterale?",
+    "answers": [
+      "Il replay potrebbe inviare nuovamente le stesse email",
+      "Le email rendono impossibile deserializzare qualsiasi evento",
+      "La recovery esegue ogni evento solo una volta per sempre",
+      "Il journal impedisce automaticamente gli effetti esterni"
+    ],
+    "correct": 0,
+    "explanation": "La ricostruzione dello stato può ripetere gli eventi: gli effetti esterni richiedono una gestione separata e idempotente."
+  },
+  {
+    "id": "EXTRA-L12-2",
+    "level": 12,
+    "subject": "DevOps",
+    "text": "Una policy IaC mostra che l’ambiente reale è diverso dalla configurazione versionata. Come si chiama questa divergenza?",
+    "answers": [
+      "Configuration drift",
+      "Compilazione JIT",
+      "Log compaction",
+      "Read skew"
+    ],
+    "correct": 0,
+    "explanation": "Il drift è una differenza tra stato desiderato e stato osservato; va analizzato prima di riconciliare automaticamente modifiche rilevanti."
+  },
+  {
+    "id": "EXTRA-L12-3",
+    "level": 12,
+    "subject": "Data Engineering",
+    "text": "Un evento tardivo deve correggere una finestra già pubblicata. Quale contratto del sink permette di aggiornare il risultato invece di duplicarlo?",
+    "answers": [
+      "Upsert o changelog con chiave della finestra e semantica di aggiornamento",
+      "Solo append anonimo senza identità della finestra",
+      "Cancellazione casuale di una riga del report",
+      "Assunzione che il risultato pubblicato sia sempre definitivo"
+    ],
+    "correct": 0,
+    "explanation": "Le correzioni richiedono un protocollo che identifichi il risultato da sostituire o rettificare."
+  },
+  {
+    "id": "EXTRA-L12-4",
+    "level": 12,
+    "subject": "System Design",
+    "text": "Una cache di risultati include nel valore dati filtrati dai permessi dell’utente. Cosa deve considerare la chiave o il controllo successivo?",
+    "answers": [
+      "Il contesto di autorizzazione che cambia il risultato",
+      "Solo il path HTTP senza altri controlli",
+      "Solo il numero di CPU del server",
+      "Il nome della funzione di rendering"
+    ],
+    "correct": 0,
+    "explanation": "Risultati identici per URL possono differire per autorizzazione: ignorarla può esporre dati di altri utenti."
+  },
+  {
+    "id": "EXTRA-L12-5",
+    "level": 12,
+    "subject": "Soft Skills",
+    "text": "Un miglioramento tecnico costoso ha benefici incerti. Quale proposta permette di valutarlo prima di impegnare un trimestre di lavoro?",
+    "answers": [
+      "Un esperimento limitato con ipotesi, misure e criterio di decisione",
+      "Un impegno totale basato solo sull’entusiasmo",
+      "Una demo priva di carico e criteri",
+      "La scelta del prodotto con il logo più noto"
+    ],
+    "correct": 0,
+    "explanation": "Un esperimento delimitato rende falsificabili le ipotesi e riduce l’incertezza decisionale."
+  },
+  {
+    "id": "EXTRA-L12-6",
+    "level": 12,
+    "subject": "Functional Programming",
+    "text": "La somma in virgola mobile viene parallelizzata cambiando il raggruppamento. Perché il risultato può cambiare leggermente?",
+    "answers": [
+      "L’arrotondamento rende la somma floating point non esattamente associativa",
+      "Ogni somma parallela è sempre intera",
+      "Il compilatore elimina necessariamente tutti gli addendi",
+      "La commutatività impone risultati casuali"
+    ],
+    "correct": 0,
+    "explanation": "L’associatività matematica dei reali non si trasferisce esattamente all’aritmetica finita dei float."
+  },
+  {
+    "id": "TECH-L13-1",
+    "level": 13,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Una transazione Kafka scrive su due topic e viene abortita. Quale configurazione del consumer evita di esporre i record transazionali abortiti?",
+    "answers": [
+      "isolation.level = read_committed",
+      "auto.offset.reset = earliest",
+      "enable.auto.commit = true",
+      "fetch.min.bytes = 1"
+    ],
+    "correct": 0,
+    "explanation": "read_committed filtra i record di transazioni abortite. Questo non rende atomiche eventuali scritture esterne del consumer."
+  },
+  {
+    "id": "TECH-L13-2",
+    "level": 13,
+    "subject": "DevOps",
+    "text": "Una migrazione distruttiva elimina dati usati dalla vecchia versione. Perché il semplice rollback dell’immagine può non ripristinare il servizio?",
+    "answers": [
+      "Il vecchio codice può trovare uno schema o dati ormai incompatibili",
+      "Un’immagine precedente non può mai essere avviata",
+      "Il rollback modifica automaticamente tutti i backup",
+      "Le migrazioni non influenzano mai il runtime"
+    ],
+    "correct": 0,
+    "explanation": "Codice e stato persistente evolvono insieme: un piano di rollback deve includere compatibilità dello schema e recupero dei dati."
+  },
+  {
+    "id": "TECH-L13-3",
+    "level": 13,
+    "subject": "Software Engineering",
+    "text": "Un test passa solo quando un altro test lo precede. Qual è un’ipotesi prioritaria da verificare?",
+    "answers": [
+      "Stato condiviso o setup non isolato tra i test",
+      "La correttezza è dimostrata in qualunque ordine",
+      "Il compilatore ordina i test secondo il valore atteso",
+      "Serve soltanto rinominare il file"
+    ],
+    "correct": 0,
+    "explanation": "Una dipendenza dall’ordine spesso indica che un test lascia o richiede stato che il proprio setup non controlla."
+  },
+  {
+    "id": "TECH-L13-4",
+    "level": 13,
+    "subject": "Data Engineering",
+    "text": "In una join distribuita, una singola chiave contiene metà dei record e satura un worker. Quale tecnica può distribuire quel lavoro, preservando con attenzione la semantica?",
+    "answers": [
+      "Salting della chiave con adeguamento dell’altro lato della join",
+      "Ridurre tutte le partizioni a una sola",
+      "Ordinare alfabeticamente i nomi dei job",
+      "Eliminare casualmente metà dei record della chiave"
+    ],
+    "correct": 0,
+    "explanation": "Il salting suddivide una hot key in sottochiavi; l’altro lato va adattato per non perdere match né introdurre risultati errati."
+  },
+  {
+    "id": "TECH-L13-5",
+    "level": 13,
+    "subject": "Distributed Systems",
+    "text": "Un vecchio leader riprende dopo una pausa lunga, ma il lease è ormai scaduto. Quale meccanismo può impedire sue scritture obsolete sulla risorsa?",
+    "answers": [
+      "Fencing token monotoni verificati dalla risorsa",
+      "Un controllo dell’orologio fatto solo prima della pausa",
+      "Un nome di host più corto",
+      "Un retry senza identificativo"
+    ],
+    "correct": 0,
+    "explanation": "La risorsa rifiuta token inferiori a quelli già accettati, così un proprietario obsoleto non può continuare a scrivere."
+  },
+  {
+    "id": "TECH-L13-6",
+    "level": 13,
+    "subject": "Functional Programming",
+    "text": "Una validazione deve accumulare tutti gli errori di campi indipendenti. Quale struttura è più adatta di un Either usato in modo fail-fast?",
+    "answers": [
+      "Una validazione applicativa con combinazione degli errori",
+      "Una catena di flatMap che si ferma al primo Left",
+      "Una variabile globale sovrascritta a ogni errore",
+      "Una funzione che lancia sempre la prima eccezione"
+    ],
+    "correct": 0,
+    "explanation": "Validazioni indipendenti possono essere combinate accumulando gli errori con un’operazione associativa, invece di fermarsi al primo."
+  },
+  {
+    "id": "EXTRA-L13-1",
+    "level": 13,
+    "subject": "System Design",
+    "text": "Una saga ha completato la prenotazione di un hotel, ma il passo successivo fallisce. Che cosa descrive una compensazione?",
+    "answers": [
+      "Un’azione di dominio che controbilancia l’effetto già committed",
+      "Un rollback ACID globale garantito",
+      "La cancellazione automatica di ogni effetto esterno",
+      "La ripetizione infinita del passo fallito"
+    ],
+    "correct": 0,
+    "explanation": "Una compensazione è un’altra operazione di business, che può fallire o non ripristinare perfettamente lo stato precedente."
+  },
+  {
+    "id": "EXTRA-L13-2",
+    "level": 13,
+    "subject": "Databases",
+    "text": "Una query deve usare WHERE stato = 'aperto' su una piccola frazione della tabella. Quale indice PostgreSQL può contenere soltanto quelle righe?",
+    "answers": [
+      "Un indice parziale con quel predicato",
+      "Una FOREIGN KEY sullo stato",
+      "Un indice che duplica ogni riga chiusa",
+      "Un vincolo CHECK al posto dell’indice"
+    ],
+    "correct": 0,
+    "explanation": "Un indice parziale indicizza le righe che soddisfano il predicato; il planner deve poter collegare il filtro della query a quello dell’indice."
+  },
+  {
+    "id": "EXTRA-L13-3",
+    "level": 13,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Un consumer termina in parallelo gli offset 10 e 12, ma 11 non è completato. Quale commit evita di saltare 11 dopo un crash?",
+    "answers": [
+      "Il prossimo offset del prefisso contiguo completato: 11",
+      "Sempre 13, perché 12 è finito",
+      "Sempre 12, ignorando 11",
+      "Qualunque offset maggiore di 12"
+    ],
+    "correct": 0,
+    "explanation": "Il commit deve rispettare i buchi nel lavoro completato: avanzare oltre 11 potrebbe farne perdere l’elaborazione al riavvio."
+  },
+  {
+    "id": "EXTRA-L13-4",
+    "level": 13,
+    "subject": "Soft Skills",
+    "text": "Un team propone una metrica che aumenta chiudendo ticket piccoli e rinviando incidenti complessi. Quale rischio evidenzi?",
+    "answers": [
+      "La metrica incentiva un comportamento diverso dal risultato desiderato",
+      "La metrica dimostra da sola il valore per gli utenti",
+      "Ogni ticket ha necessariamente lo stesso costo",
+      "Basta aumentare il target per correggere gli incentivi"
+    ],
+    "correct": 0,
+    "explanation": "Una misura usata come obiettivo può essere ottimizzata a scapito del risultato: servono segnali bilanciati e contesto."
+  },
+  {
+    "id": "EXTRA-L13-5",
+    "level": 13,
+    "subject": "Software Engineering",
+    "text": "Due richieste con la stessa idempotency key hanno payload diversi. Quale risposta del server mantiene un contratto non ambiguo?",
+    "answers": [
+      "Rifiutare il riuso incompatibile confrontando l’impronta della richiesta",
+      "Eseguire entrambe come se fossero uguali",
+      "Scegliere un payload a caso",
+      "Unire silenziosamente i campi delle due richieste"
+    ],
+    "correct": 0,
+    "explanation": "La chiave deve identificare una stessa intenzione; riusarla per richieste differenti richiede un conflitto esplicito."
+  },
+  {
+    "id": "EXTRA-L13-6",
+    "level": 13,
+    "subject": "Functional Programming",
+    "text": "Una risorsa deve essere rilasciata anche se il task viene cancellato durante use. Perché try/finally attorno alla sola costruzione dell’effetto può non bastare?",
+    "answers": [
+      "La costruzione può terminare prima dell’esecuzione effettiva della risorsa",
+      "Ogni finally viene sempre ignorato dal compilatore",
+      "La cancellazione avviene solo a programma spento",
+      "L’effetto non può mai usare risorse"
+    ],
+    "correct": 0,
+    "explanation": "Il rilascio deve essere legato al ciclo di esecuzione dell’effetto, non soltanto al momento in cui il programma viene costruito."
+  },
+  {
+    "id": "TECH-L14-1",
+    "level": 14,
+    "subject": "Databases",
+    "text": "Due transazioni in snapshot isolation leggono che due medici sono reperibili e ciascuna disattiva un medico diverso. Entrambe possono committare lasciandone zero: quale anomalia è questa?",
+    "answers": [
+      "Write skew",
+      "Dirty read",
+      "Perdita di un aggiornamento sulla stessa riga",
+      "Lettura di una riga mai committed"
+    ],
+    "correct": 0,
+    "explanation": "Le transazioni aggiornano righe diverse ma violano insieme un vincolo tra righe. Lo snapshot da solo non equivale alla serializzabilità."
+  },
+  {
+    "id": "TECH-L14-2",
+    "level": 14,
+    "subject": "System Design",
+    "text": "Una richiesta chiama in parallelo 100 dipendenze indipendenti e aspetta tutte. Ciascuna finisce entro T con probabilità 0,99. Qual è circa la probabilità che finiscano tutte entro T?",
+    "answers": [
+      "36,6%",
+      "99%",
+      "1%",
+      "100%"
+    ],
+    "correct": 0,
+    "explanation": "Con indipendenza, le probabilità si moltiplicano: 0,99¹⁰⁰ ≈ 0,366. Il fan-out può amplificare il peso delle latenze di coda."
+  },
+  {
+    "id": "TECH-L14-3",
+    "level": 14,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "In Akka/Pekko, un attore riceve messaggi da due mittenti diversi tramite tell diretto. Quale ordine NON è garantito dalla sola consegna ordinaria?",
+    "answers": [
+      "Un ordine totale comune ai messaggi dei due mittenti",
+      "L’ordine relativo dei messaggi consegnati dallo stesso mittente allo stesso destinatario",
+      "L’assenza di una garanzia globale tra mittenti",
+      "La possibilità che un messaggio non arrivi"
+    ],
+    "correct": 0,
+    "explanation": "La garanzia di ordine della consegna è riferita alla coppia mittente-destinatario; non crea un ordine totale tra mittenti distinti."
+  },
+  {
+    "id": "TECH-L14-4",
+    "level": 14,
+    "subject": "Soft Skills",
+    "text": "In un incidente, la mitigazione più rapida riduce l’impatto ma comporta un rischio noto di perdita dati. Chi coordina deve decidere con urgenza: quale approccio è più responsabile?",
+    "answers": [
+      "Esplicitare rischio e alternative, coinvolgere il decisore autorizzato e registrare la scelta",
+      "Nascondere il rischio per ottenere consenso",
+      "Lasciare che chiunque esegua interventi concorrenti",
+      "Garantire a priori che non accadrà alcuna perdita"
+    ],
+    "correct": 0,
+    "explanation": "Con urgenza e informazioni incomplete servono una responsabilità chiara, rischi comunicati e decisioni tracciabili, non promesse infondate."
+  },
+  {
+    "id": "TECH-L14-5",
+    "level": 14,
+    "subject": "DevOps",
+    "text": "Un servizio esaurisce il budget di errore molto rapidamente dopo un rilascio. Quale azione segue una policy SLO che privilegia il recupero dell’affidabilità?",
+    "answers": [
+      "Sospendere i rilasci rischiosi e mitigare o annullare quello problematico",
+      "Abbassare retroattivamente lo SLO per nascondere il problema",
+      "Spegnere gli alert senza indagare",
+      "Aumentare automaticamente la frequenza dei rilasci rischiosi"
+    ],
+    "correct": 0,
+    "explanation": "Una policy del budget di errore collega la velocità di cambiamento all’affidabilità osservata e prevede interventi quando il budget è consumato."
+  },
+  {
+    "id": "TECH-L14-6",
+    "level": 14,
+    "subject": "Functional Programming",
+    "text": "Nel pattern bracket(acquire)(use)(release), quale garanzia si cerca in presenza di errori o cancellazione dopo l’acquisizione riuscita?",
+    "answers": [
+      "Eseguire il rilascio della risorsa secondo la semantica di finalizzazione dell’effetto",
+      "Ritentare use all’infinito",
+      "Evitare qualsiasi fallimento di acquire",
+      "Rendere superflua ogni gestione delle risorse"
+    ],
+    "correct": 0,
+    "explanation": "bracket collega il ciclo di vita della risorsa all’effetto: il finalizzatore deve essere gestito anche quando use non termina con successo."
+  },
+  {
+    "id": "EXTRA-L14-1",
+    "level": 14,
+    "subject": "Data Engineering",
+    "text": "Una dimensione SCD2 ha intervalli di validità sovrapposti per la stessa business key. Quale effetto può avere una join temporale sui fatti?",
+    "answers": [
+      "Abbinare lo stesso fatto a più versioni della dimensione",
+      "Garantire automaticamente la versione più recente",
+      "Eliminare tutti gli eventi tardivi",
+      "Ridurre sempre la cardinalità a zero"
+    ],
+    "correct": 0,
+    "explanation": "L’unicità della versione valida a un dato istante richiede intervalli coerenti e non sovrapposti per la stessa entità."
+  },
+  {
+    "id": "EXTRA-L14-2",
+    "level": 14,
+    "subject": "Software Engineering",
+    "text": "Un algoritmo concorrente viene testato soltanto con molte ripetizioni casuali senza fallimenti. Che cosa puoi concludere?",
+    "answers": [
+      "Non sono stati osservati errori in quelle esecuzioni, ma non è una prova generale",
+      "L’algoritmo è linearizzabile per ogni interleaving",
+      "Ogni race è matematicamente esclusa",
+      "Non serve specificare gli invarianti"
+    ],
+    "correct": 0,
+    "explanation": "Stress test e prove di correttezza offrono evidenze diverse; interleaving rari possono restare inesplorati."
+  },
+  {
+    "id": "EXTRA-L14-3",
+    "level": 14,
+    "subject": "Distributed Systems",
+    "text": "Con N = 5 repliche, R = 3 e W = 3, cosa garantisce la sola disuguaglianza R + W > N sui set di repliche?",
+    "answers": [
+      "L’intersezione tra ogni quorum di lettura e scrittura",
+      "La linearizzabilità completa senza altre condizioni",
+      "L’assenza di scritture concorrenti",
+      "La consegna esattamente una volta dei messaggi"
+    ],
+    "correct": 0,
+    "explanation": "L’intersezione è una proprietà combinatoria; ordine, versioni e protocollo determinano le garanzie complete di consistenza."
+  },
+  {
+    "id": "EXTRA-L14-4",
+    "level": 14,
+    "subject": "DevOps",
+    "text": "Un servizio ha SLO 99,9%. In una finestra coerente, il tasso di errore osservato è 1%. Qual è il burn rate rispetto al budget ammesso?",
+    "answers": [
+      "10×",
+      "1×",
+      "0,1×",
+      "100×"
+    ],
+    "correct": 0,
+    "explanation": "Il tasso ammesso è 0,1%; 1% / 0,1% = 10. Il burn rate confronta consumo osservato e budget proporzionale."
+  },
+  {
+    "id": "EXTRA-L14-5",
+    "level": 14,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Un topic Kafka compatto contiene più record per la stessa chiave. Che cosa NON devi assumere prima che la compaction li processi?",
+    "answers": [
+      "Che una lettura incontri già una sola versione per chiave",
+      "Che il log abbia offset",
+      "Che possano esistere versioni obsolete ancora leggibili",
+      "Che il consumer debba interpretare le chiavi"
+    ],
+    "correct": 0,
+    "explanation": "La compaction è asincrona: la presenza della policy non implica deduplicazione immediata del log."
+  },
+  {
+    "id": "EXTRA-L14-6",
+    "level": 14,
+    "subject": "Functional Programming",
+    "text": "Due effetti sono indipendenti nei dati ma modificano la stessa risorsa esterna. La loro composizione applicativa autorizza sempre a eseguirli in parallelo senza cambiare il comportamento?",
+    "answers": [
+      "No: dipende dalla semantica degli effetti e dalla risorsa condivisa",
+      "Sì: l’indipendenza dei dati implica assenza di interferenza",
+      "Sì: Applicative significa sempre thread separati",
+      "No: nessun effetto può mai essere parallelizzato"
+    ],
+    "correct": 0,
+    "explanation": "L’assenza di dipendenze di dati non elimina possibili interazioni osservabili sugli effetti esterni."
+  },
+  {
+    "id": "TECH-L15-1",
+    "level": 15,
+    "subject": "Distributed Systems",
+    "text": "Un protocollo di consenso deve tollerare 2 crash con quorum di maggioranza su 5 nodi. Quanti nodi servono per formare una maggioranza?",
+    "answers": [
+      "3",
+      "2",
+      "4",
+      "5"
+    ],
+    "correct": 0,
+    "explanation": "Una maggioranza di 5 è 3. Due maggioranze si intersecano; restano necessari il protocollo corretto e ipotesi di rete adeguate per il progresso."
+  },
+  {
+    "id": "TECH-L15-2",
+    "level": 15,
+    "subject": "Data Engineering",
+    "text": "Una pipeline riparte da un checkpoint consistente, ma il sink esterno ha già accettato alcune scritture successive. Cosa serve per evitare duplicati osservabili?",
+    "answers": [
+      "Coordinamento transazionale col sink o scritture idempotenti con identità stabili",
+      "Soltanto aumentare la frequenza dei checkpoint",
+      "Rinominare i file del checkpoint",
+      "Assumere che il replay non avverrà mai"
+    ],
+    "correct": 0,
+    "explanation": "Il checkpoint dello stato di calcolo non annulla scritture esterne già avvenute: il confine della garanzia deve comprendere anche il sink."
+  },
+  {
+    "id": "TECH-L15-3",
+    "level": 15,
+    "subject": "Software Engineering",
+    "text": "Un endpoint di pagamento riceve due richieste concorrenti con la stessa idempotency key. Quale soluzione evita la corsa tra controllo ed esecuzione?",
+    "answers": [
+      "Acquisire atomicamente la chiave e coordinare esito ed effetto con il provider",
+      "Fare una SELECT e poi pagare senza alcun vincolo",
+      "Usare una cache locale diversa per ogni istanza",
+      "Generare una nuova idempotency key a ogni retry"
+    ],
+    "correct": 0,
+    "explanation": "Controllo e acquisizione della chiave devono essere atomici. L’effetto esterno richiede a sua volta idempotenza o un protocollo di riconciliazione."
+  },
+  {
+    "id": "TECH-L15-4",
+    "level": 15,
+    "subject": "Databases",
+    "text": "Un’app salva un ordine nel database e deve pubblicarne l’evento. Quale soluzione evita il buco del crash tra commit dell’ordine e invio al broker?",
+    "answers": [
+      "Salvare ordine e record outbox nella stessa transazione, poi pubblicare con deduplicazione",
+      "Pubblicare prima e ignorare gli errori del database",
+      "Fare due scritture indipendenti senza retry",
+      "Usare solo un log in memoria"
+    ],
+    "correct": 0,
+    "explanation": "Il transactional outbox rende atomici ordine e intenzione di pubblicare. Il relay può inviare duplicati, quindi la gestione delle ripetizioni resta necessaria."
+  },
+  {
+    "id": "TECH-L15-5",
+    "level": 15,
+    "subject": "System Design",
+    "text": "Il requisito impone read-your-writes dopo una modifica, ma le repliche di lettura sono asincrone. Quale strategia lo soddisfa se implementata correttamente?",
+    "answers": [
+      "Leggere dal leader o da una replica che abbia raggiunto il commit richiesto",
+      "Scegliere sempre una replica casuale senza verificarne il progresso",
+      "Aumentare il TTL della cache senza invalidazione",
+      "Considerare ogni replica aggiornata appena parte la scrittura"
+    ],
+    "correct": 0,
+    "explanation": "Occorre collegare la lettura alla posizione del commit, oppure usare il leader appropriato; il solo bilanciamento tra repliche non basta."
+  },
+  {
+    "id": "TECH-L15-6",
+    "level": 15,
+    "subject": "Functional Programming",
+    "text": "Per una composizione monadica corretta, quale equivalenza esprime l’associatività di flatMap?",
+    "answers": [
+      "m.flatMap(f).flatMap(g) = m.flatMap(x ⇒ f(x).flatMap(g))",
+      "m.flatMap(f) = m per ogni f",
+      "m.flatMap(f).flatMap(g) = m.flatMap(g).flatMap(f) sempre",
+      "flatMap deve eseguire ogni effetto due volte"
+    ],
+    "correct": 0,
+    "explanation": "L’associatività permette di cambiare il raggruppamento mantenendo l’ordine delle dipendenze; non implica commutatività degli effetti."
+  },
+  {
+    "id": "EXTRA-L15-1",
+    "level": 15,
+    "subject": "Akka/Pekko, Kafka",
+    "text": "Un producer Kafka transazionale vecchio riparte mentre un nuovo producer usa la stessa identità transazionale con una nuova epoch. A cosa serve il fencing del producer?",
+    "answers": [
+      "Impedire scritture valide dal producer obsoleto",
+      "Consentire due writer indistinguibili per sempre",
+      "Rendere tutti i topic una sola partizione",
+      "Azzerare gli offset di tutti i consumer"
+    ],
+    "correct": 0,
+    "explanation": "L’epoch consente al broker di riconoscere un producer obsoleto per la stessa identità transazionale."
+  },
+  {
+    "id": "EXTRA-L15-2",
+    "level": 15,
+    "subject": "DevOps",
+    "text": "Un servizio deve tollerare la perdita completa di una zona. Tre repliche sono tutte sullo stesso nodo in quella zona. Quale proprietà manca?",
+    "answers": [
+      "Distribuzione tra failure domain indipendenti",
+      "Un numero più lungo nel tag dell’immagine",
+      "Un log con più righe",
+      "Tre nomi diversi per lo stesso processo"
+    ],
+    "correct": 0,
+    "explanation": "Il numero di repliche da solo non protegge da un guasto comune: serve distribuirle tra domini di guasto coerenti col requisito."
+  },
+  {
+    "id": "EXTRA-L15-3",
+    "level": 15,
+    "subject": "Soft Skills",
+    "text": "In una review di design emergono due obiettivi incompatibili con le risorse disponibili. Quale esito rende la decisione operativa?",
+    "answers": [
+      "Far scegliere una priorità al responsabile appropriato e registrare il compromesso accettato",
+      "Dichiarare entrambi garantiti senza cambiare nulla",
+      "Nascondere uno dei vincoli nel diagramma",
+      "Rinviare indefinitamente ogni comunicazione"
+    ],
+    "correct": 0,
+    "explanation": "Una decisione operativa deve assegnare responsabilità, esplicitare il trade-off e rendere verificabili gli impegni risultanti."
+  },
+  {
+    "id": "EXTRA-L15-4",
+    "level": 15,
+    "subject": "Data Engineering",
+    "text": "Un backfill storico usa una trasformazione nuova mentre il flusso live continua con la vecchia. Quale rischio richiede versionamento e coordinamento dei risultati?",
+    "answers": [
+      "Mescolare risultati con semantiche diverse nella stessa vista",
+      "Avere necessariamente meno file in storage",
+      "Eliminare per definizione ogni duplicato",
+      "Rendere irrilevante il contratto dei dati"
+    ],
+    "correct": 0,
+    "explanation": "Versioni diverse della logica possono produrre significati diversi: serve un piano di migrazione, confronto e cutover."
+  },
+  {
+    "id": "EXTRA-L15-5",
+    "level": 15,
+    "subject": "Distributed Systems",
+    "text": "Un follower diventa leader ma non ha ancora tutte le scritture considerate committed dal protocollo. Quale proprietà di sicurezza deve impedire questa elezione?",
+    "answers": [
+      "Una regola che ammetta solo candidati con log sufficientemente aggiornato secondo il protocollo",
+      "L’ordinamento alfabetico dei nomi dei nodi",
+      "Il numero massimo di CPU del candidato",
+      "Il solo minor tempo di risposta al ping"
+    ],
+    "correct": 0,
+    "explanation": "I protocolli di consenso vincolano l’elezione per conservare le decisioni già committed; la sola raggiungibilità non basta."
+  },
+  {
+    "id": "EXTRA-L15-6",
+    "level": 15,
+    "subject": "Functional Programming",
+    "text": "Nella composizione di Kleisli f: A => F[B] e g: B => F[C], quale operazione del contesto F serve per collegare il risultato di f a g?",
+    "answers": [
+      "flatMap",
+      "Solo concatenazione di stringhe",
+      "Un cast obbligatorio a C",
+      "L’ordinamento di tutti i possibili A"
+    ],
+    "correct": 0,
+    "explanation": "La composizione monadica passa il risultato dentro F alla funzione successiva attraverso flatMap, preservando la semantica del contesto."
+  }
+]

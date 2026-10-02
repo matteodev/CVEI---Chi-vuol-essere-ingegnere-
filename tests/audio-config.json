@@ -1,0 +1,9 @@
+{
+  "music": "tone.wav",
+  "effects": {
+    "correct": "tone.wav",
+    "wrong": "does-not-exist.wav",
+    "win": "../static/questions.json",
+    "select": "https://example.com/never-requested.mp3"
+  }
+}

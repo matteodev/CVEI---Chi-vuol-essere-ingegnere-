@@ -1,0 +1,12 @@
+{
+  "music": null,
+  "effects": {
+    "select": null,
+    "help": null,
+    "switch": null,
+    "suspense": null,
+    "correct": null,
+    "wrong": null,
+    "win": null
+  }
+}

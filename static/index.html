@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090c1c">
+  <title>Chi vuol essere ingegnere?</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23090c1c'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='38' fill='%23c4abff'%3EΩ%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <div class="scenery" aria-hidden="true"><div class="beam beam-one"></div><div class="beam beam-two"></div><div class="stage-grid"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div></div>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Chi vuol essere ingegnere, home"><span class="brand-mark">Ω</span><span>CHI VUOL ESSERE<br><strong>INGEGNERE?</strong></span></a>
+    <div class="top-actions"><span class="studio-tag"><i></i> IL TUO STUDIO, IL TUO SHOW</span><button id="sound" class="icon-button" aria-label="Attiva musica ed effetti" aria-pressed="false">♫ <span>Audio off</span></button><button id="rules" class="icon-button" aria-label="Come si gioca">?</button></div>
+  </header>
+  <main>
+    <section id="welcome" class="welcome" aria-labelledby="welcome-title">
+      <div class="welcome-copy"><div class="eyebrow"><span class="tiny-star">✦</span> IL QUIZ PER MENTI CURIOSE</div><h1 id="welcome-title">La tua prossima<br>grande <em>intuizione.</em></h1><p class="intro">Quindici domande. Tre aiuti. Un milione di motivi<br class="desktop-break"> per fidarti del tuo ingegno.</p><div class="welcome-actions"><button id="start" class="button primary" disabled>Caricamento…</button><button id="resume" class="button secondary" hidden>Riprendi partita ↗</button></div><p id="load-status" class="fineprint" role="status">Prepariamo lo studio…</p><div class="welcome-stats"><div><strong>15</strong><span>LIVELLI DA SCALARE</span></div><div><strong id="bank-count">180</strong><span>DOMANDE NEL POOL</span></div><div><strong>3</strong><span>ASSI NELLA MANICA</span></div></div></div>
+      <div class="welcome-art" aria-hidden="true"><div class="medallion"><div class="medallion-inner"><span class="seal-top">CODICE · DATI · SISTEMI</span><span class="seal-symbol">Ω</span><span class="seal-title">CHI VUOL ESSERE<br><b>INGEGNERE?</b></span><span class="seal-bottom">✦ &nbsp; ACCENDI L’INGEGNO &nbsp; ✦</span></div></div><div class="million-chip"><span>IL TRAGUARDO</span><strong>€ 1.000.000</strong><small>La gloria è reale. Il montepremi è virtuale.</small></div><span class="float-formula formula-one">data → insight</span><span class="float-formula formula-two">λx. f(x)</span></div>
+      <div class="welcome-bottom"><span>DAL PRIMO COMMIT AI SISTEMI DISTRIBUITI.</span><span>Data &amp; Software Engineering <i>·</i> Distributed Systems <i>·</i> Akka/Pekko, Kafka <i>·</i> Databases <i>·</i> DevOps <i>·</i> System Design <i>·</i> Soft Skills</span></div>
+    </section>
+    <section id="game" class="game" hidden aria-label="Partita">
+      <div class="play-area"><div class="round-heading"><div><div class="eyebrow" id="round-label">DOMANDA 01 / 15</div><h1 id="round-prize">€ 100</h1></div><div class="difficulty"><span id="difficulty-label">Riscaldamento</span><div id="difficulty-dots" aria-hidden="true"></div></div></div>
+        <div class="lifelines" aria-label="Aiuti, utilizzabili una sola volta"><button id="fifty" class="lifeline"><span class="lifeline-icon">50:50</span><span><strong>Cinquanta e cinquanta</strong><small>Due possibilità in meno</small></span></button><button id="audience" class="lifeline"><span class="lifeline-icon people">♟♟♟</span><span><strong>Chiedi al pubblico</strong><small>Ascolta lo studio</small></span></button><button id="switch" class="lifeline"><span class="lifeline-icon">⇄</span><span><strong>Switch</strong><small>Cambia la domanda</small></span></button></div>
+        <div class="question-stage"><div class="question-meta"><span id="subject">SOFTWARE ENGINEERING</span><span>✦</span><span id="question-tag">PRENDITI IL TUO TEMPO</span></div><h2 id="question" tabindex="-1"></h2><div id="answers" class="answers"></div><div class="answer-footer"><span id="answer-hint">Scegli una risposta per accenderla.</span><button id="confirm" class="button primary" disabled>È la mia risposta <span>→</span></button></div></div>
+        <div class="game-bottom"><span><span class="live-dot"></span> <span id="guaranteed">Traguardo garantito: € 0</span></span><button id="walk" class="text-button">Mi ritiro con € 0 ↗</button></div><p id="game-status" class="sr-only" role="status" aria-live="polite"></p>
+      </div>
+      <aside class="ladder-panel" aria-label="Scala premi"><div class="ladder-heading"><span>LA SCALATA</span><span>↗</span></div><ol id="ladder" reversed></ol><div class="ladder-note"><span>◆</span> Traguardo garantito</div></aside>
+    </section>
+    <section id="result" class="result" hidden aria-labelledby="result-title"><div class="result-symbol" id="result-symbol">✦</div><div class="eyebrow" id="result-kicker">PARTITA CONCLUSA</div><h1 id="result-title">Un ottimo progetto.</h1><p id="result-description"></p><div class="result-prize" id="result-prize"></div><p class="fineprint">Montepremi virtuale · Soddisfazione autentica</p><div class="result-detail" id="result-detail"></div><button id="again" class="button primary">Ricomincia la scalata ↗</button><button id="home" class="text-button">Torna allo studio</button></section>
+  </main>
+  <footer class="site-footer"><span>PROGETTATO PER IL PIACERE DI SAPERE.</span><span>Un quiz amatoriale indipendente <i>·</i> Nessun premio in denaro</span></footer>
+  <dialog id="modal" aria-labelledby="modal-title"><div class="modal-content"><div class="eyebrow" id="modal-kicker"></div><h2 id="modal-title"></h2><div id="modal-body"></div><div id="modal-actions" class="modal-actions"></div></div></dialog>
+  <noscript><div class="noscript">Attiva JavaScript nel browser per giocare.</div></noscript>
+</body>
+</html>
